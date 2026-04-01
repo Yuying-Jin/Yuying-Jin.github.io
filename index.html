@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yuying Jin — Software Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #16161f;
+      --ink-muted: #52526a;
+      --ink-faint: #9898ab;
+      --bg: #f9f9f7;
+      --surface: #ffffff;
+      --border: #e6e6e2;
+      --accent: #2f5be8;
+      --accent-light: #eef1fd;
+      --teal: #0a9e7a;
+      --teal-light: #e0f5ee;
+      --coral: #e05030;
+      --coral-light: #fdeee9;
+      --amber: #c97d08;
+      --amber-light: #fdf3e0;
+      --radius: 14px;
+      --radius-sm: 8px;
+    }
+    html { scroll-behavior: smooth; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      font-size: 15px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* BACK TO TOP */
+    #back-to-top {
+      position: fixed; bottom: 2rem; right: 2rem; z-index: 200;
+      width: 40px; height: 40px; border-radius: 50%;
+      background: var(--surface); border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; text-decoration: none; color: var(--ink-muted);
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.25s, transform 0.2s, border-color 0.15s;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    }
+    #back-to-top.visible { opacity: 1; pointer-events: auto; }
+    #back-to-top:hover { border-color: #aaaacc; color: var(--ink); transform: translateY(-2px); }
+
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(249,249,247,0.9);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 54px;
+    }
+    .nav-logo { font-weight: 500; font-size: 14.5px; color: var(--ink); text-decoration: none; letter-spacing: -0.01em; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { font-size: 13.5px; color: var(--ink-muted); text-decoration: none; transition: color 0.15s; }
+    .nav-links a:hover { color: var(--accent); }
+    .nav-links a.active { color: var(--accent); }
+
+    .container { max-width: 880px; margin: 0 auto; padding: 0 2rem; }
+    section { padding: 5rem 0; }
+    section + section { border-top: 1px solid var(--border); }
+
+    #hero { padding: 7rem 0 5rem; }
+    .eyebrow {
+      font-size: 11.5px; font-weight: 500; letter-spacing: 0.13em;
+      text-transform: uppercase; color: var(--accent);
+      display: flex; align-items: center; gap: 8px; margin-bottom: 1.5rem;
+    }
+    .eyebrow::before { content: ''; width: 20px; height: 2px; background: var(--accent); border-radius: 2px; }
+
+    h1 { font-size: clamp(2.4rem, 5vw, 3.5rem); font-weight: 300; letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 1.5rem; }
+    h1 strong { font-weight: 500; }
+
+    .hero-desc { font-size: 1.05rem; color: var(--ink-muted); max-width: 580px; line-height: 1.8; margin-bottom: 2.5rem; }
+    .hero-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 3rem; }
+
+    .btn { display: inline-flex; align-items: center; gap: 6px; padding: 9px 20px; border-radius: var(--radius-sm); font-size: 13.5px; font-weight: 500; text-decoration: none; transition: transform 0.12s, background 0.12s, border-color 0.12s; }
+    .btn:hover { transform: translateY(-1px); }
+    .btn-dark { background: var(--ink); color: #fff; }
+    .btn-dark:hover { background: #2a2a3a; }
+    .btn-outline { background: var(--surface); color: var(--ink-muted); border: 1px solid var(--border); }
+    .btn-outline:hover { border-color: #aaaacc; color: var(--ink); }
+
+    .hero-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .htag { font-size: 12px; font-family: 'DM Mono', monospace; padding: 4px 11px; border-radius: 100px; border: 1px solid var(--border); background: var(--surface); color: var(--ink-muted); }
+    .htag.blue { background: var(--accent-light); color: #2040c0; border-color: #c8d4f8; }
+    .htag.teal { background: var(--teal-light); color: #0a6b52; border-color: #a0ddc8; }
+    .htag.coral { background: var(--coral-light); color: #b33820; border-color: #f4c0ae; }
+
+    .slabel { font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 2.5rem; }
+
+    .focus-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; }
+    .focus-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.4rem 1.25rem; transition: border-color 0.15s, transform 0.15s; }
+    .focus-card:hover { border-color: #b8b8d8; transform: translateY(-2px); }
+    .ficon { width: 34px; height: 34px; border-radius: 8px; margin-bottom: 0.9rem; display: flex; align-items: center; justify-content: center; font-size: 17px; }
+    .ficon.blue { background: var(--accent-light); }
+    .ficon.teal { background: var(--teal-light); }
+    .ficon.coral { background: var(--coral-light); }
+    .ficon.amber { background: var(--amber-light); }
+    .focus-card h3 { font-size: 13.5px; font-weight: 500; margin-bottom: 0.35rem; }
+    .focus-card p { font-size: 12.5px; color: var(--ink-muted); line-height: 1.55; }
+
+    .projects-list { display: flex; flex-direction: column; gap: 18px; }
+    .pcard { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.75rem; display: grid; grid-template-columns: 1fr auto; gap: 1rem 1.5rem; align-items: start; transition: border-color 0.15s, transform 0.15s; }
+    .pcard:hover { border-color: #b0b0cc; transform: translateY(-2px); }
+    .pcard.featured { border-color: #c4cffa; background: #fafbff; }
+    .pcard.dim { background: #fafafa; }
+    .pcard.dim h3 { color: var(--ink-muted); }
+    .pcard.dim .pmeta { color: var(--ink-faint); }
+
+    .pmeta { font-size: 10.5px; font-weight: 500; letter-spacing: 0.11em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.45rem; }
+    .pcard h3 { font-size: 16px; font-weight: 500; letter-spacing: -0.01em; margin-bottom: 0.5rem; }
+    .pcard p { font-size: 13.5px; color: var(--ink-muted); line-height: 1.65; max-width: 620px; }
+    .ptags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 1rem; }
+    .ptag { font-size: 11.5px; font-family: 'DM Mono', monospace; padding: 3px 8px; border-radius: 4px; background: #f0f0f5; color: var(--ink-muted); }
+    .plink { font-size: 13px; color: var(--accent); text-decoration: none; white-space: nowrap; display: flex; align-items: center; gap: 4px; padding: 6px 14px; border: 1px solid #c4cffa; border-radius: var(--radius-sm); height: fit-content; transition: background 0.12s; }
+    .plink:hover { background: var(--accent-light); }
+
+    .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 28px; }
+    .sg-label { font-size: 11.5px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 10px; }
+    .pills { display: flex; flex-wrap: wrap; gap: 6px; }
+    .pill { font-size: 12.5px; font-family: 'DM Mono', monospace; padding: 4px 10px; border-radius: 6px; border: 1px solid var(--border); color: var(--ink-muted); background: var(--surface); }
+
+    .exp-list { display: flex; flex-direction: column; gap: 32px; }
+    .exp-item { display: grid; grid-template-columns: 155px 1fr; gap: 1.5rem; }
+    .exp-date { font-size: 12px; color: var(--ink-faint); font-family: 'DM Mono', monospace; line-height: 1.6; padding-top: 2px; }
+    .exp-content h3 { font-size: 15px; font-weight: 500; margin-bottom: 2px; }
+    .exp-org { font-size: 13px; color: var(--ink-muted); margin-bottom: 8px; }
+    .exp-content ul { padding-left: 1.1rem; font-size: 13.5px; color: var(--ink-muted); line-height: 1.7; }
+    .exp-content ul li { margin-bottom: 3px; }
+
+    #contact { text-align: center; padding: 5rem 0 4rem; }
+    .contact-rule { width: 40px; height: 2px; background: var(--border); border-radius: 2px; margin: 0 auto 3rem; }
+    #contact h2 { font-size: 2.2rem; font-weight: 300; letter-spacing: -0.03em; margin-bottom: 0.75rem; }
+    #contact p { color: var(--ink-muted); margin-bottom: 2rem; }
+    .contact-links { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+
+    footer { border-top: 1px solid var(--border); padding: 1.5rem 2rem; text-align: center; font-size: 12px; color: var(--ink-faint); }
+
+    @media (max-width: 620px) {
+      .exp-item { grid-template-columns: 1fr; gap: 0.3rem; }
+      .pcard { grid-template-columns: 1fr; }
+      nav .nav-links { display: none; }
+      h1 { font-size: 2.2rem; }
+      #back-to-top { bottom: 1.25rem; right: 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- BACK TO TOP -->
+<a id="back-to-top" href="#hero" aria-label="Back to top">
+  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+    <path d="M8 12V4M4 7l4-4 4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+</a>
+
+<nav>
+  <a href="#hero" class="nav-logo">Yuying Jin</a>
+  <ul class="nav-links">
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="container">
+
+  <section id="hero">
+    <div class="eyebrow">Open to work · Boston, MA · May 2026</div>
+    <h1>I build systems<br>that <strong>actually ship.</strong></h1>
+    <p class="hero-desc">
+      Software engineer focused on backend architecture, AI integration, and full-stack product development.
+      I take complex problems and turn them into clean, working systems —
+      from API design and data modeling to production-ready applications.
+    </p>
+    <div class="hero-actions">
+      <a href="mailto:jin.yuyin@northeastern.edu" class="btn btn-dark">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><rect x="1" y="3" width="14" height="10" rx="2" stroke="white" stroke-width="1.5"/><path d="M1 5l7 5 7-5" stroke="white" stroke-width="1.5"/></svg>
+        Get in touch
+      </a>
+      <a href="https://github.com/Yuying-Jin" target="_blank" class="btn btn-outline">GitHub ↗</a>
+      <a href="https://linkedin.com/in/yuying-jin999" target="_blank" class="btn btn-outline">LinkedIn ↗</a>
+    </div>
+    <div class="hero-tags">
+      <span class="htag blue">Backend / APIs</span>
+      <span class="htag blue">System Design</span>
+      <span class="htag blue">Java · Spring Boot</span>
+      <span class="htag teal">AI Integration</span>
+      <span class="htag teal">React · React Native</span>
+      <span class="htag coral">Full-Stack</span>
+    </div>
+  </section>
+
+  <section id="focus">
+    <p class="slabel">What I do</p>
+    <div class="focus-grid">
+      <div class="focus-card">
+        <div class="ficon blue">⚙️</div>
+        <h3>Backend & APIs</h3>
+        <p>Spring Boot services, clean architecture, design patterns, and reliable business logic that holds up under real use.</p>
+      </div>
+      <div class="focus-card">
+        <div class="ficon teal">🤖</div>
+        <h3>AI Integration</h3>
+        <p>Embedding LLMs and ML models into real products — prompt pipelines, knowledge grounding, and practical inference.</p>
+      </div>
+      <div class="focus-card">
+        <div class="ficon coral">📱</div>
+        <h3>Full-Stack Product</h3>
+        <p>End-to-end ownership from database schema to polished React and React Native interfaces.</p>
+      </div>
+      <div class="focus-card">
+        <div class="ficon amber">🗂️</div>
+        <h3>System Design</h3>
+        <p>Multi-component architectures, inter-service communication, and data modeling for maintainable, extensible systems.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <p class="slabel">Selected projects</p>
+    <div class="projects-list">
+
+      <div class="pcard featured">
+        <div>
+          <p class="pmeta">Backend · AI Integration · Java</p>
+          <h3>Knowledge-Grounded AI Chatbot</h3>
+          <p>
+            Architected a modular AI chatbot from scratch — designed the knowledge encoding layer,
+            prompt pipeline, and fallback handling logic, coordinating with teammates on UI and
+            chat history modules. The pipeline combines user input, encoded domain knowledge, and
+            few-shot examples for ~1s responses with hallucination control. Business logic,
+            knowledge retrieval, and UI are fully decoupled.
+          </p>
+          <div class="ptags">
+            <span class="ptag">Java</span>
+            <span class="ptag">JavaFX</span>
+            <span class="ptag">Gemini API</span>
+            <span class="ptag">Prompt Engineering</span>
+            <span class="ptag">System Architecture</span>
+          </div>
+        </div>
+        <a href="https://github.com/Yuying-Jin/Chatbot-Lexa" target="_blank" class="plink">GitHub ↗</a>
+      </div>
+
+      <div class="pcard featured">
+        <div>
+          <p class="pmeta">Full-Stack · Mobile · REST API</p>
+          <h3>Doggy Detection Mobile App</h3>
+          <p>
+            Independently designed and built the entire client-server system: defined the MongoDB
+            schema, implemented user authentication, engineered detection history storage, and
+            integrated Roboflow API for real-time breed identification. Made every architecture
+            decision solo — from REST endpoint design to client-side state management.
+            Delivers results in ~2s with sample images and breed descriptions.
+          </p>
+          <div class="ptags">
+            <span class="ptag">React Native</span>
+            <span class="ptag">Node.js</span>
+            <span class="ptag">MongoDB</span>
+            <span class="ptag">REST API</span>
+            <span class="ptag">Expo</span>
+          </div>
+        </div>
+        <a href="https://github.com/Yuying-Jin/DoggyDetection" target="_blank" class="plink">GitHub ↗</a>
+      </div>
+
+      <div class="pcard">
+        <div>
+          <p class="pmeta">System Design · Java</p>
+          <h3>Smartphone Ecosystem Simulation</h3>
+          <p>
+            Led development of a Java desktop app modeling a multi-enterprise production pipeline
+            across four organizations: Design, Parts, Assembly, and Distribution. Designed
+            inter-organization communication channels and ownership boundaries to mirror how
+            decisions flow from spec to shipped product. Focus on clean handoffs and
+            realistic business workflow modeling.
+          </p>
+          <div class="ptags">
+            <span class="ptag">Java Swing</span>
+            <span class="ptag">OOP</span>
+            <span class="ptag">System Design</span>
+            <span class="ptag">Architecture</span>
+          </div>
+        </div>
+        <a href="https://github.com/Yuying-Jin/SmartphoneEcosystem" target="_blank" class="plink">GitHub ↗</a>
+      </div>
+
+      <div class="pcard">
+        <div>
+          <p class="pmeta">Backend · Product · Java</p>
+          <h3>ScheduleEase — Course Recommendation Engine</h3>
+          <p>
+            Built the course recommendation module within a schedule generation system.
+            Parsed student transcript data (XHTML → JSON), modeled major requirement rules as
+            structured data, and designed the comparison engine that outputs a personalized
+            suggested course list. Also built the front-end UI for major selection and transcript
+            upload, integrating with the backend to deliver accurate recommendations end-to-end.
+          </p>
+          <div class="ptags">
+            <span class="ptag">Java</span>
+            <span class="ptag">Spring Boot</span>
+            <span class="ptag">Data Parsing</span>
+            <span class="ptag">Business Logic</span>
+            <span class="ptag">Full-Stack</span>
+          </div>
+        </div>
+        <a href="https://github.com/Yuying-Jin/SE411/tree/main/ScheduleEase" target="_blank" class="plink">GitHub ↗</a>
+      </div>
+
+      <div class="pcard">
+        <div>
+          <p class="pmeta">ML · Computer Vision · System Integration</p>
+          <h3>Student Engagement Detection System</h3>
+          <p>
+            Designed and owned the system architecture for a desktop app that continuously captures
+            and analyzes student engagement during live sessions. Coordinated three independently
+            developed modules — eye tracking, facial expression recognition (DeepFace), and Firebase
+            database — into a single stable PyQt5 application. Resolved cross-module camera
+            management conflicts and contributed to engagement classification model fine-tuning.
+          </p>
+          <div class="ptags">
+            <span class="ptag">Python</span>
+            <span class="ptag">PyQt5</span>
+            <span class="ptag">OpenCV</span>
+            <span class="ptag">DeepFace</span>
+            <span class="ptag">Firebase</span>
+            <span class="ptag">Scikit-learn</span>
+          </div>
+        </div>
+        <a href="https://github.com/neha26pp/MLEngagementTool" target="_blank" class="plink">GitHub ↗</a>
+      </div>
+
+      <div class="pcard">
+        <div>
+          <p class="pmeta">AI · Generative · Python</p>
+          <h3>AI-Powered Adventure Game</h3>
+          <p>
+            Designed a procedurally generated world using Perlin noise for terrain and a
+            Genetic Algorithm for city placement and travel cost modeling. Integrated Ollama
+            to generate dynamic narrative events based on player actions — practical early
+            experience making LLM output purposeful within a constrained game loop.
+          </p>
+          <div class="ptags">
+            <span class="ptag">Python</span>
+            <span class="ptag">Pygame</span>
+            <span class="ptag">Genetic Algorithm</span>
+            <span class="ptag">Ollama / LLM</span>
+            <span class="ptag">Procedural Generation</span>
+          </div>
+        </div>
+        <a href="https://github.com/Yuying-Jin/CS441/tree/main/final" target="_blank" class="plink">GitHub ↗</a>
+      </div>
+
+      <div class="pcard dim">
+        <div>
+          <p class="pmeta">ML Background · Distributed Training</p>
+          <h3>Parallel VQA Training — FSDP & DDP</h3>
+          <p>
+            Implemented distributed Visual Question Answering training with FSDP and DDP in PyTorch,
+            using CLIP for multimodal feature extraction. Deployed on HPC clusters via Slurm with
+            mixed-precision optimization. Foundation in large-scale ML training infrastructure.
+          </p>
+          <div class="ptags">
+            <span class="ptag">PyTorch</span>
+            <span class="ptag">FSDP / DDP</span>
+            <span class="ptag">CLIP</span>
+            <span class="ptag">Slurm</span>
+            <span class="ptag">HPC</span>
+          </div>
+        </div>
+        <a href="https://github.com/BUG139632/CSYE7105_VQA_project" target="_blank" class="plink">GitHub ↗</a>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="skills">
+    <p class="slabel">Technical skills</p>
+    <div class="skills-grid">
+      <div>
+        <p class="sg-label">Languages</p>
+        <div class="pills">
+          <span class="pill">Python</span>
+          <span class="pill">Java</span>
+          <span class="pill">JavaScript</span>
+          <span class="pill">TypeScript</span>
+          <span class="pill">C/C++</span>
+          <span class="pill">Shell</span>
+          <span class="pill">R</span>
+        </div>
+      </div>
+      <div>
+        <p class="sg-label">Backend & Systems</p>
+        <div class="pills">
+          <span class="pill">Spring Boot</span>
+          <span class="pill">Node.js</span>
+          <span class="pill">REST APIs</span>
+          <span class="pill">System Design</span>
+          <span class="pill">Design Patterns</span>
+          <span class="pill">MongoDB</span>
+          <span class="pill">MySQL / SQL Server</span>
+          <span class="pill">Firebase</span>
+        </div>
+      </div>
+      <div>
+        <p class="sg-label">AI & ML</p>
+        <div class="pills">
+          <span class="pill">PyTorch</span>
+          <span class="pill">TensorFlow</span>
+          <span class="pill">Scikit-learn</span>
+          <span class="pill">Gemini API</span>
+          <span class="pill">Ollama</span>
+          <span class="pill">Prompt Engineering</span>
+          <span class="pill">OpenCV</span>
+        </div>
+      </div>
+      <div>
+        <p class="sg-label">Frontend & Tools</p>
+        <div class="pills">
+          <span class="pill">React</span>
+          <span class="pill">React Native</span>
+          <span class="pill">Astro</span>
+          <span class="pill">JavaFX</span>
+          <span class="pill">Figma</span>
+          <span class="pill">Postman</span>
+          <span class="pill">Git</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <p class="slabel">Experience</p>
+    <div class="exp-list">
+
+      <div style="margin-bottom: 0.5rem;">
+        <p style="font-size: 13px; font-weight: 500; color: var(--ink); margin-bottom: 0.25rem;">Penn State Behrend — Campus Research & Development Roles</p>
+        <p style="font-size: 12px; color: var(--ink-faint);">Erie, PA · 2022 – 2024 · Faculty-supervised positions</p>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-date">Feb – May 2024</div>
+        <div class="exp-content">
+          <h3>Website Developer</h3>
+          <p class="exp-org">Bold Creation Club</p>
+          <ul>
+            <li>Migrated codebase to WordPress with Divi, preserving layout fidelity and integrating interactive plugins to improve UX.</li>
+            <li>Organized and restructured digital resource links onto a separate site with enhanced navigation and functionality.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-date">Jun 2022 –<br>Dec 2023</div>
+        <div class="exp-content">
+          <h3>Frankenstein Variorum Research Assistant & Co-author</h3>
+          <p class="exp-org">Digital Humanities Lab</p>
+          <ul>
+            <li>Built an XSLT/Python pipeline to automate TEI file processing across hundreds of documents — a scale that made manual processing infeasible.</li>
+            <li>Rebuilt the Variorum Viewer UI in ReactJS and Astro, enabling visualization of five full fiction editions; added interactive features and mobile responsiveness.</li>
+            <li>Presented at the 2023 Keystone DH Conference; co-authored all lab presentations in 2024.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-date">Jul 2022</div>
+        <div class="exp-content">
+          <h3>Digital Mitford Coding Research Assistant</h3>
+          <p class="exp-org">Digital Humanities Lab</p>
+          <ul>
+            <li>Supported workshop participants with TEI/XML coding issues and data processing workflows.</li>
+            <li>Provided hands-on guidance on markup standards and debugging, helping participants complete structured text encoding tasks.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-date">Jun – Jul 2022</div>
+        <div class="exp-content">
+          <h3>DIGIT Student Program Web Developer</h3>
+          <p class="exp-org">DIGIT Program</p>
+          <ul>
+            <li>Designed and built the "About" page in HTML and CSS, ensuring responsive display across devices.</li>
+            <li>Collaborated with the team to align page structure with existing site components and styling.</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="education">
+    <p class="slabel">Education</p>
+    <div class="exp-list">
+
+      <div class="exp-item">
+        <div class="exp-date">Expected<br>May 2026</div>
+        <div class="exp-content">
+          <h3>MS Information Systems</h3>
+          <p class="exp-org">Northeastern University · Boston, MA</p>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-date">May 2024</div>
+        <div class="exp-content">
+          <h3>BS Computer Science · BA Digital Media, Arts & Technology</h3>
+          <p class="exp-org">Penn State Erie, The Behrend College · Erie, PA</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="contact-rule"></div>
+    <h2>Let's build something.</h2>
+    <p>Open to entry-level backend, full-stack, and AI engineering roles — available from Summer 2026.</p>
+    <div class="contact-links">
+      <a href="mailto:jin.yuyin@northeastern.edu" class="btn btn-dark">jin.yuyin@northeastern.edu</a>
+      <a href="https://github.com/Yuying-Jin" target="_blank" class="btn btn-outline">GitHub ↗</a>
+      <a href="https://linkedin.com/in/yuying-jin999" target="_blank" class="btn btn-outline">LinkedIn ↗</a>
+    </div>
+  </section>
+
+</div>
+
+<footer>© 2026 Yuying Jin · Boston, MA · (857) 919-8416</footer>
+
+<script>
+  const btn = document.getElementById('back-to-top');
+  window.addEventListener('scroll', () => {
+    btn.classList.toggle('visible', window.scrollY > 400);
+  });
+
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navLinks.forEach(a => a.classList.remove('active'));
+        const active = document.querySelector(`.nav-links a[href="#${entry.target.id}"]`);
+        if (active) active.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-40% 0px -55% 0px' });
+  sections.forEach(s => observer.observe(s));
+</script>
+
+</body>
+</html>
