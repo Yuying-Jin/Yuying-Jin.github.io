@@ -36,7 +36,6 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    /* BACK TO TOP */
     #back-to-top {
       position: fixed; bottom: 2rem; right: 2rem; z-index: 200;
       width: 40px; height: 40px; border-radius: 50%;
@@ -131,12 +130,14 @@
     .pill { font-size: 12.5px; font-family: 'DM Mono', monospace; padding: 4px 10px; border-radius: 6px; border: 1px solid var(--border); color: var(--ink-muted); background: var(--surface); }
 
     .exp-list { display: flex; flex-direction: column; gap: 32px; }
-    .exp-item { display: grid; grid-template-columns: 155px 1fr; gap: 1.5rem; }
+    .exp-item { display: grid; grid-template-columns: 155px 1fr auto; gap: 1.5rem; align-items: start; }
+    .exp-item.no-links { grid-template-columns: 155px 1fr; }
     .exp-date { font-size: 12px; color: var(--ink-faint); font-family: 'DM Mono', monospace; line-height: 1.6; padding-top: 2px; }
     .exp-content h3 { font-size: 15px; font-weight: 500; margin-bottom: 2px; }
     .exp-org { font-size: 13px; color: var(--ink-muted); margin-bottom: 8px; }
     .exp-content ul { padding-left: 1.1rem; font-size: 13.5px; color: var(--ink-muted); line-height: 1.7; }
     .exp-content ul li { margin-bottom: 3px; }
+    .exp-links { display: flex; flex-direction: column; gap: 6px; }
 
     #contact { text-align: center; padding: 5rem 0 4rem; }
     .contact-rule { width: 40px; height: 2px; background: var(--border); border-radius: 2px; margin: 0 auto 3rem; }
@@ -148,6 +149,8 @@
 
     @media (max-width: 620px) {
       .exp-item { grid-template-columns: 1fr; gap: 0.3rem; }
+      .exp-item.no-links { grid-template-columns: 1fr; }
+      .exp-links { flex-direction: row; flex-wrap: wrap; }
       .pcard { grid-template-columns: 1fr; }
       nav .nav-links { display: none; }
       h1 { font-size: 2.2rem; }
@@ -157,7 +160,6 @@
 </head>
 <body>
 
-<!-- BACK TO TOP -->
 <a id="back-to-top" href="#hero" aria-label="Back to top">
   <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
     <path d="M8 12V4M4 7l4-4 4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -451,7 +453,7 @@
         <p style="font-size: 12px; color: var(--ink-faint);">Erie, PA · 2022 – 2024 · Faculty-supervised positions</p>
       </div>
 
-      <div class="exp-item">
+      <div class="exp-item no-links">
         <div class="exp-date">Feb – May 2024</div>
         <div class="exp-content">
           <h3>Website Developer</h3>
@@ -474,9 +476,13 @@
             <li>Presented at the 2023 Keystone DH Conference; co-authored all lab presentations in 2024.</li>
           </ul>
         </div>
+        <div class="exp-links">
+          <a href="https://github.com/FrankensteinVariorum" target="_blank" class="plink">GitHub ↗</a>
+          <a href="https://frankensteinvariorum.org/" target="_blank" class="plink">Live site ↗</a>
+        </div>
       </div>
 
-      <div class="exp-item">
+      <div class="exp-item no-links">
         <div class="exp-date">Jul 2022</div>
         <div class="exp-content">
           <h3>Digital Mitford Coding Research Assistant</h3>
@@ -488,7 +494,7 @@
         </div>
       </div>
 
-      <div class="exp-item">
+      <div class="exp-item no-links">
         <div class="exp-date">Jun – Jul 2022</div>
         <div class="exp-content">
           <h3>DIGIT Student Program Web Developer</h3>
@@ -507,7 +513,7 @@
     <p class="slabel">Education</p>
     <div class="exp-list">
 
-      <div class="exp-item">
+      <div class="exp-item no-links">
         <div class="exp-date">Expected<br>May 2026</div>
         <div class="exp-content">
           <h3>MS Information Systems</h3>
@@ -515,7 +521,7 @@
         </div>
       </div>
 
-      <div class="exp-item">
+      <div class="exp-item no-links">
         <div class="exp-date">May 2024</div>
         <div class="exp-content">
           <h3>BS Computer Science · BA Digital Media, Arts & Technology</h3>
