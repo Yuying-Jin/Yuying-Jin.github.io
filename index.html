@@ -181,11 +181,12 @@
 
   <section id="hero">
     <div class="eyebrow">Open to work · Boston, MA · May 2026</div>
-    <h1>I build systems<br>that <strong>actually ship.</strong></h1>
+    <h1>I build systems<br>that <strong>think and ship.</strong></h1>
     <p class="hero-desc">
-      Software engineer focused on backend architecture, AI integration, and full-stack product development.
-      I take complex problems and turn them into clean, working systems —
-      from API design and data modeling to production-ready applications.
+      Software engineer focused on AI-integrated system design — embedding LLM and computer vision
+      capabilities into practical, end-to-end applications. I bring a product-minded approach to
+      architecture decisions: designing modular systems, owning features from concept to
+      implementation, and solving the real problems behind the requirements.
     </p>
     <div class="hero-actions">
       <a href="mailto:jin.yuyin@northeastern.edu" class="btn btn-dark">
@@ -196,11 +197,11 @@
       <a href="https://linkedin.com/in/yuying-jin999" target="_blank" class="btn btn-outline">LinkedIn ↗</a>
     </div>
     <div class="hero-tags">
-      <span class="htag blue">Backend / APIs</span>
-      <span class="htag blue">System Design</span>
-      <span class="htag blue">Java · Spring Boot</span>
       <span class="htag teal">AI Integration</span>
-      <span class="htag teal">React · React Native</span>
+      <span class="htag teal">LLM · Computer Vision</span>
+      <span class="htag blue">System Design</span>
+      <span class="htag blue">Backend / APIs</span>
+      <span class="htag blue">Java · Python</span>
       <span class="htag coral">Full-Stack</span>
     </div>
   </section>
@@ -209,24 +210,24 @@
     <p class="slabel">What I do</p>
     <div class="focus-grid">
       <div class="focus-card">
-        <div class="ficon blue">⚙️</div>
-        <h3>Backend & APIs</h3>
-        <p>Spring Boot services, clean architecture, design patterns, and reliable business logic that holds up under real use.</p>
-      </div>
-      <div class="focus-card">
         <div class="ficon teal">🤖</div>
         <h3>AI Integration</h3>
-        <p>Embedding LLMs and ML models into real products — prompt pipelines, knowledge grounding, and practical inference.</p>
+        <p>Embedding LLMs and ML models into real products — prompt pipelines, knowledge grounding, and practical inference workflows.</p>
+      </div>
+      <div class="focus-card">
+        <div class="ficon blue">⚙️</div>
+        <h3>System Design</h3>
+        <p>Multi-component architectures with clear module boundaries, inter-service communication, and decisions that hold up over time.</p>
       </div>
       <div class="focus-card">
         <div class="ficon coral">📱</div>
         <h3>Full-Stack Product</h3>
-        <p>End-to-end ownership from database schema to polished React and React Native interfaces.</p>
+        <p>End-to-end ownership from database schema and REST APIs to polished React and React Native interfaces.</p>
       </div>
       <div class="focus-card">
-        <div class="ficon amber">🗂️</div>
-        <h3>System Design</h3>
-        <p>Multi-component architectures, inter-service communication, and data modeling for maintainable, extensible systems.</p>
+        <div class="ficon amber">🔍</div>
+        <h3>Backend & APIs</h3>
+        <p>Clean architecture, design patterns, and reliable business logic — built to be maintainable, not just functional.</p>
       </div>
     </div>
   </section>
@@ -237,20 +238,21 @@
 
       <div class="pcard featured">
         <div>
-          <p class="pmeta">Backend · AI Integration · Java</p>
-          <h3>Knowledge-Grounded AI Chatbot</h3>
+          <p class="pmeta">AI Integration · System Architecture · Java</p>
+          <h3>AI Chatbot with Knowledge Base</h3>
           <p>
-            Architected a modular AI chatbot from scratch — designed the knowledge encoding layer,
-            prompt pipeline, and fallback handling logic, coordinating with teammates on UI and
-            chat history modules. The pipeline combines user input, encoded domain knowledge, and
-            few-shot examples for ~1s responses with hallucination control. Business logic,
-            knowledge retrieval, and UI are fully decoupled.
+            Designed the overall system architecture and led LLM integration via Gemini API —
+            implementing a knowledge base construction layer using Java Reflection, defining
+            module boundaries that enabled teammates to independently develop the UI and chat
+            history components. The prompt pipeline combines user input, encoded domain knowledge,
+            and prompt instructions, delivering ~1s responses with guardrails for out-of-scope queries.
+            Business logic, knowledge retrieval, and UI are fully decoupled.
           </p>
           <div class="ptags">
             <span class="ptag">Java</span>
             <span class="ptag">JavaFX</span>
             <span class="ptag">Gemini API</span>
-            <span class="ptag">Prompt Engineering</span>
+            <span class="ptag">Prompt Pipeline</span>
             <span class="ptag">System Architecture</span>
           </div>
         </div>
@@ -259,14 +261,39 @@
 
       <div class="pcard featured">
         <div>
+          <p class="pmeta">ML · System Design · Python</p>
+          <h3>Measuring Student Engagement using Machine Learning</h3>
+          <p>
+            Designed and owned the MVC architecture for a desktop app that continuously captures
+            and analyzes student engagement during live sessions. Built the full View layer and
+            Controller logic coordinating three independently developed modules — eye tracking,
+            facial expression recognition (DeepFace), and Firebase database — into a single stable
+            application. Diagnosed and resolved a cross-module camera resource conflict by
+            centralizing instantiation in the DataRouter class, ensuring a single shared instance
+            across all components within a session.
+          </p>
+          <div class="ptags">
+            <span class="ptag">Python</span>
+            <span class="ptag">PyQt5</span>
+            <span class="ptag">MVC Architecture</span>
+            <span class="ptag">OpenCV</span>
+            <span class="ptag">DeepFace</span>
+            <span class="ptag">Firebase</span>
+          </div>
+        </div>
+        <a href="https://github.com/neha26pp/MLEngagementTool" target="_blank" class="plink">GitHub ↗</a>
+      </div>
+
+      <div class="pcard featured">
+        <div>
           <p class="pmeta">Full-Stack · Mobile · REST API</p>
           <h3>Doggy Detection Mobile App</h3>
           <p>
             Independently designed and built the entire client-server system: defined the MongoDB
-            schema, implemented user authentication, engineered detection history storage, and
-            integrated Roboflow API for real-time breed identification. Made every architecture
-            decision solo — from REST endpoint design to client-side state management.
-            Delivers results in ~2s with sample images and breed descriptions.
+            schema, implemented custom user authentication, engineered detection history storage,
+            and integrated Roboflow's pre-trained breed detection model via API. Made every
+            architecture decision solo — from REST endpoint design to client-side state management.
+            Delivers results in ~2s with breed name, sample images, and descriptions.
           </p>
           <div class="ptags">
             <span class="ptag">React Native</span>
@@ -281,14 +308,35 @@
 
       <div class="pcard">
         <div>
+          <p class="pmeta">Backend · Product · Java</p>
+          <h3>ScheduleEase</h3>
+          <p>
+            Built the course recommendation module within a schedule generation system.
+            Modeled major and elective requirement rules as structured JSON based on official
+            program requirements, and implemented a rule-matching engine to generate personalized
+            course suggestions. Parsed student transcript data from XHTML to JSON, feeding
+            structured input into the recommendation pipeline end-to-end.
+          </p>
+          <div class="ptags">
+            <span class="ptag">Java</span>
+            <span class="ptag">Spring Boot</span>
+            <span class="ptag">Data Parsing</span>
+            <span class="ptag">Rule Engine</span>
+            <span class="ptag">Full-Stack</span>
+          </div>
+        </div>
+        <a href="https://github.com/Yuying-Jin/SE411/tree/main/ScheduleEase" target="_blank" class="plink">GitHub ↗</a>
+      </div>
+
+      <div class="pcard">
+        <div>
           <p class="pmeta">System Design · Java</p>
           <h3>Smartphone Ecosystem Simulation</h3>
           <p>
             Led development of a Java desktop app modeling a multi-enterprise production pipeline
-            across four organizations: Design, Parts, Assembly, and Distribution. Designed
-            inter-organization communication channels and ownership boundaries to mirror how
-            decisions flow from spec to shipped product. Focus on clean handoffs and
-            realistic business workflow modeling.
+            across four enterprises: Smartphone, Component Supplier, EMS, and Logistics.
+            Designed inter-enterprise work request routing and ownership boundaries to reflect
+            real-world delegation patterns from design through production and distribution.
           </p>
           <div class="ptags">
             <span class="ptag">Java Swing</span>
@@ -302,78 +350,32 @@
 
       <div class="pcard">
         <div>
-          <p class="pmeta">Backend · Product · Java</p>
-          <h3>ScheduleEase — Course Recommendation Engine</h3>
+          <p class="pmeta">Computer Vision · Python</p>
+          <h3>Bird Species Classification</h3>
           <p>
-            Built the course recommendation module within a schedule generation system.
-            Parsed student transcript data (XHTML → JSON), modeled major requirement rules as
-            structured data, and designed the comparison engine that outputs a personalized
-            suggested course list. Also built the front-end UI for major selection and transcript
-            upload, integrating with the backend to deliver accurate recommendations end-to-end.
-          </p>
-          <div class="ptags">
-            <span class="ptag">Java</span>
-            <span class="ptag">Spring Boot</span>
-            <span class="ptag">Data Parsing</span>
-            <span class="ptag">Business Logic</span>
-            <span class="ptag">Full-Stack</span>
-          </div>
-        </div>
-        <a href="https://github.com/Yuying-Jin/SE411/tree/main/ScheduleEase" target="_blank" class="plink">GitHub ↗</a>
-      </div>
-
-      <div class="pcard">
-        <div>
-          <p class="pmeta">ML · Computer Vision · System Integration</p>
-          <h3>Student Engagement Detection System</h3>
-          <p>
-            Designed and owned the system architecture for a desktop app that continuously captures
-            and analyzes student engagement during live sessions. Coordinated three independently
-            developed modules — eye tracking, facial expression recognition (DeepFace), and Firebase
-            database — into a single stable PyQt5 application. Resolved cross-module camera
-            management conflicts and contributed to engagement classification model fine-tuning.
+            Proposed and trained YOLOv8 for bird species classification after researching model
+            alternatives, achieving 99% accuracy on a 2GB image dataset with GPU acceleration.
+            Implemented model inference integration into a teammate-built Flask web application,
+            enabling interactive species identification.
           </p>
           <div class="ptags">
             <span class="ptag">Python</span>
-            <span class="ptag">PyQt5</span>
-            <span class="ptag">OpenCV</span>
-            <span class="ptag">DeepFace</span>
-            <span class="ptag">Firebase</span>
-            <span class="ptag">Scikit-learn</span>
+            <span class="ptag">YOLOv8</span>
+            <span class="ptag">Computer Vision</span>
+            <span class="ptag">Flask</span>
           </div>
         </div>
-        <a href="https://github.com/neha26pp/MLEngagementTool" target="_blank" class="plink">GitHub ↗</a>
-      </div>
-
-      <div class="pcard">
-        <div>
-          <p class="pmeta">AI · Generative · Python</p>
-          <h3>AI-Powered Adventure Game</h3>
-          <p>
-            Designed a procedurally generated world using Perlin noise for terrain and a
-            Genetic Algorithm for city placement and travel cost modeling. Integrated Ollama
-            to generate dynamic narrative events based on player actions — practical early
-            experience making LLM output purposeful within a constrained game loop.
-          </p>
-          <div class="ptags">
-            <span class="ptag">Python</span>
-            <span class="ptag">Pygame</span>
-            <span class="ptag">Genetic Algorithm</span>
-            <span class="ptag">Ollama / LLM</span>
-            <span class="ptag">Procedural Generation</span>
-          </div>
-        </div>
-        <a href="https://github.com/Yuying-Jin/CS441/tree/main/final" target="_blank" class="plink">GitHub ↗</a>
+        <a href="https://github.com/Yuying-Jin/bird-classification" target="_blank" class="plink">GitHub ↗</a>
       </div>
 
       <div class="pcard dim">
         <div>
           <p class="pmeta">ML Background · Distributed Training</p>
-          <h3>Parallel VQA Training — FSDP & DDP</h3>
+          <h3>Parallel Computing for Visual Question Answering (VQA)</h3>
           <p>
             Implemented distributed Visual Question Answering training with FSDP and DDP in PyTorch,
-            using CLIP for multimodal feature extraction. Deployed on HPC clusters via Slurm with
-            mixed-precision optimization. Foundation in large-scale ML training infrastructure.
+            using CLIP for multimodal feature extraction and Transformer for cross-modal fusion.
+            Configured and ran experiments on HPC clusters via Slurm with mixed-precision optimization.
           </p>
           <div class="ptags">
             <span class="ptag">PyTorch</span>
@@ -418,10 +420,13 @@
       <div>
         <p class="sg-label">AI & ML</p>
         <div class="pills">
+          <span class="pill">LLM Integration</span>
+          <span class="pill">Gemini API</span>
+          <span class="pill">Ollama</span>
           <span class="pill">PyTorch</span>
           <span class="pill">TensorFlow</span>
-          <span class="pill">Gemini API</span>
-          <span class="pill">Prompt Engineering</span>
+          <span class="pill">YOLOv8</span>
+          <span class="pill">CLIP</span>
           <span class="pill">OpenCV</span>
         </div>
       </div>
@@ -431,6 +436,7 @@
           <span class="pill">React</span>
           <span class="pill">React Native</span>
           <span class="pill">Astro</span>
+          <span class="pill">Git</span>
           <span class="pill">Figma</span>
         </div>
       </div>
@@ -441,61 +447,23 @@
     <p class="slabel">Experience</p>
     <div class="exp-list">
 
-      <div style="margin-bottom: 0.5rem;">
-        <p style="font-size: 13px; font-weight: 500; color: var(--ink); margin-bottom: 0.25rem;">Penn State Behrend — Campus Research & Development Roles</p>
-        <p style="font-size: 12px; color: var(--ink-faint);">Erie, PA · 2022 – 2024 · Faculty-supervised positions</p>
-      </div>
-
-      <div class="exp-item no-links">
-        <div class="exp-date">Feb – May 2024</div>
-        <div class="exp-content">
-          <h3>Website Developer</h3>
-          <p class="exp-org">Bold Creation Club</p>
-          <ul>
-            <li>Migrated codebase to WordPress with Divi, preserving layout fidelity and integrating interactive plugins to improve UX.</li>
-            <li>Organized and restructured digital resource links onto a separate site with enhanced navigation and functionality.</li>
-          </ul>
-        </div>
-      </div>
-
       <div class="exp-item">
         <div class="exp-date">Jun 2022 –<br>Dec 2023</div>
         <div class="exp-content">
           <h3>Frankenstein Variorum Research Assistant & Co-author</h3>
-          <p class="exp-org">Digital Humanities Lab</p>
+          <p class="exp-org">Penn State Behrend · Digital Humanities Lab · Erie, PA</p>
           <ul>
-            <li>Built an XSLT/Python pipeline to automate TEI file processing across hundreds of documents — a scale that made manual processing infeasible.</li>
-            <li>Rebuilt the Variorum Viewer UI in ReactJS and Astro, enabling visualization of five full fiction editions; added interactive features and mobile responsiveness.</li>
-            <li>Presented at the 2023 Keystone DH Conference; co-authored all lab presentations in 2024.</li>
+            <li>Collaborated with faculty to debug and optimize individual data processing steps for TEI/XML-encoded data, improving accuracy of cross-version text comparison across five editions of <em>Frankenstein</em>.</li>
+            <li>Automated the full XSLT/Python pipeline via shell scripting across hundreds of TEI files, reducing processing time from infeasible manual effort to ~2.5 hours.</li>
+            <li>Rebuilt the Variorum Viewer UI in React and Astro, making architecture decisions between application-layer and pipeline-layer solutions to ensure data rendered correctly on the frontend.</li>
+            <li>Conceived and implemented cross-version navigation that automatically scrolls to and highlights the corresponding segment in the edition's representative color, enabling users to seamlessly compare the same passage across versions.</li>
+            <li>Implemented a character-diff visualization system that quantifies textual variance between corresponding segments and encodes divergence magnitude as a color gradient, including handling of omitted segments.</li>
+            <li>Presented at the 2023 Keystone DH Conference and contributed to digital humanities conference presentations as co-author in 2024.</li>
           </ul>
         </div>
         <div class="exp-links">
           <a href="https://github.com/FrankensteinVariorum" target="_blank" class="plink">GitHub ↗</a>
           <a href="https://frankensteinvariorum.org/" target="_blank" class="plink">Live site ↗</a>
-        </div>
-      </div>
-
-      <div class="exp-item no-links">
-        <div class="exp-date">Jul 2022</div>
-        <div class="exp-content">
-          <h3>Digital Mitford Coding Research Assistant</h3>
-          <p class="exp-org">Digital Humanities Lab</p>
-          <ul>
-            <li>Supported workshop participants with TEI/XML coding issues and data processing workflows.</li>
-            <li>Provided hands-on guidance on markup standards and debugging, helping participants complete structured text encoding tasks.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="exp-item no-links">
-        <div class="exp-date">Jun – Jul 2022</div>
-        <div class="exp-content">
-          <h3>DIGIT Student Program Web Developer</h3>
-          <p class="exp-org">DIGIT Program</p>
-          <ul>
-            <li>Designed and built the "About" page in HTML and CSS, ensuring responsive display across devices.</li>
-            <li>Collaborated with the team to align page structure with existing site components and styling.</li>
-          </ul>
         </div>
       </div>
 
@@ -507,7 +475,7 @@
     <div class="exp-list">
 
       <div class="exp-item no-links">
-        <div class="exp-date">Expected<br>May 2026</div>
+        <div class="exp-date">May 2026</div>
         <div class="exp-content">
           <h3>MS Information Systems</h3>
           <p class="exp-org">Northeastern University · Boston, MA</p>
@@ -528,7 +496,7 @@
   <section id="contact">
     <div class="contact-rule"></div>
     <h2>Let's build something.</h2>
-    <p>Open to entry-level backend, full-stack, and AI engineering roles — available from Summer 2026.</p>
+    <p>Open to AI application, backend, and full-stack engineering roles — available from Summer 2026.</p>
     <div class="contact-links">
       <a href="mailto:jin.yuyin@northeastern.edu" class="btn btn-dark">jin.yuyin@northeastern.edu</a>
       <a href="https://github.com/Yuying-Jin" target="_blank" class="btn btn-outline">GitHub ↗</a>
