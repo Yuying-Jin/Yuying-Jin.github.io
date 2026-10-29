@@ -1,0 +1,21 @@
+# Editor and IDE settings
+.idea/
+.vscode/
+*.code-workspace
+*.swp
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Office lock files and personal documents
+~$*
+*.docx
+*.pdf
+
+# Local tooling
+node_modules/
+.env
+.env.*
