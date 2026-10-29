@@ -1,532 +1,312 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Yuying Jin — Software Engineer</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --ink: #16161f;
-      --ink-muted: #52526a;
-      --ink-faint: #9898ab;
-      --bg: #f9f9f7;
-      --surface: #ffffff;
-      --border: #e6e6e2;
-      --accent: #2f5be8;
-      --accent-light: #eef1fd;
-      --teal: #0a9e7a;
-      --teal-light: #e0f5ee;
-      --coral: #e05030;
-      --coral-light: #fdeee9;
-      --amber: #c97d08;
-      --amber-light: #fdf3e0;
-      --radius: 14px;
-      --radius-sm: 8px;
-    }
-    html { scroll-behavior: smooth; }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: 'DM Sans', sans-serif;
-      background: var(--bg);
-      color: var(--ink);
-      font-size: 15px;
-      line-height: 1.65;
-      -webkit-font-smoothing: antialiased;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yuying Jin · Developer in Boston: Requirements, Systems, Workflows</title>
+<meta name="description" content="Yuying Jin is a Boston-based full-stack developer who turns vague needs into working systems: requirements analysis, system and workflow design, and handoffs non-technical teams can run.">
+<link rel="canonical" href="https://yuying-jin.github.io/portfolio/">
+<meta name="author" content="Yuying Jin">
+<meta name="theme-color" content="#f1f4f2" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#12161c" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 
-    #back-to-top {
-      position: fixed; bottom: 2rem; right: 2rem; z-index: 200;
-      width: 40px; height: 40px; border-radius: 50%;
-      background: var(--surface); border: 1px solid var(--border);
-      display: flex; align-items: center; justify-content: center;
-      cursor: pointer; text-decoration: none; color: var(--ink-muted);
-      opacity: 0; pointer-events: none;
-      transition: opacity 0.25s, transform 0.2s, border-color 0.15s;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-    }
-    #back-to-top.visible { opacity: 1; pointer-events: auto; }
-    #back-to-top:hover { border-color: #aaaacc; color: var(--ink); transform: translateY(-2px); }
+<meta property="og:type" content="profile">
+<meta property="og:title" content="Yuying Jin · Developer in Boston">
+<meta property="og:description" content="I find what's actually needed behind a request, then design the system and the workflow so it keeps running after I leave.">
+<meta property="og:url" content="https://yuying-jin.github.io/portfolio/">
+<meta property="og:site_name" content="Yuying Jin">
+<meta property="profile:first_name" content="Yuying">
+<meta property="profile:last_name" content="Jin">
+<meta name="twitter:card" content="summary">
 
-    nav {
-      position: sticky; top: 0; z-index: 100;
-      background: rgba(249,249,247,0.9);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid var(--border);
-      padding: 0 2rem;
-      display: flex; align-items: center; justify-content: space-between;
-      height: 54px;
-    }
-    .nav-logo { font-weight: 500; font-size: 14.5px; color: var(--ink); text-decoration: none; letter-spacing: -0.01em; }
-    .nav-links { display: flex; gap: 2rem; list-style: none; }
-    .nav-links a { font-size: 13.5px; color: var(--ink-muted); text-decoration: none; transition: color 0.15s; }
-    .nav-links a:hover { color: var(--accent); }
-    .nav-links a.active { color: var(--accent); }
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfilePage",
+  "url": "https://yuying-jin.github.io/portfolio/",
+  "mainEntity": {
+    "@type": "Person",
+    "@id": "https://yuying-jin.github.io/portfolio/#me",
+    "name": "Yuying Jin",
+    "jobTitle": "Software Engineer",
+    "description": "Full-stack developer focused on requirements analysis, system design and workflow design.",
+    "url": "https://yuying-jin.github.io/portfolio/",
+    "address": { "@type": "PostalAddress", "addressLocality": "Boston", "addressRegion": "MA", "addressCountry": "US" },
+    "alumniOf": [
+      { "@type": "CollegeOrUniversity", "name": "Northeastern University", "url": "https://www.northeastern.edu/" },
+      { "@type": "CollegeOrUniversity", "name": "Penn State Behrend", "url": "https://behrend.psu.edu/" }
+    ],
+    "knowsAbout": ["Requirements analysis", "System design", "Workflow design", "Full-stack web development", "Content management systems", "Next.js", "TypeScript", "Java", "Python"],
+    "sameAs": ["https://github.com/Yuying-Jin", "https://www.linkedin.com/in/yuying-jin999"]
+  }
+}
+</script>
 
-    .container { max-width: 880px; margin: 0 auto; padding: 0 2rem; }
-    section { padding: 5rem 0; }
-    section + section { border-top: 1px solid var(--border); }
-
-    #hero { padding: 7rem 0 5rem; }
-    .eyebrow {
-      font-size: 11.5px; font-weight: 500; letter-spacing: 0.13em;
-      text-transform: uppercase; color: var(--accent);
-      display: flex; align-items: center; gap: 8px; margin-bottom: 1.5rem;
-    }
-    .eyebrow::before { content: ''; width: 20px; height: 2px; background: var(--accent); border-radius: 2px; }
-
-    h1 { font-size: clamp(2.4rem, 5vw, 3.5rem); font-weight: 300; letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 1.5rem; }
-    h1 strong { font-weight: 500; }
-
-    .hero-desc { font-size: 1.05rem; color: var(--ink-muted); max-width: 580px; line-height: 1.8; margin-bottom: 2.5rem; }
-    .hero-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 3rem; }
-
-    .btn { display: inline-flex; align-items: center; gap: 6px; padding: 9px 20px; border-radius: var(--radius-sm); font-size: 13.5px; font-weight: 500; text-decoration: none; transition: transform 0.12s, background 0.12s, border-color 0.12s; }
-    .btn:hover { transform: translateY(-1px); }
-    .btn-dark { background: var(--ink); color: #fff; }
-    .btn-dark:hover { background: #2a2a3a; }
-    .btn-outline { background: var(--surface); color: var(--ink-muted); border: 1px solid var(--border); }
-    .btn-outline:hover { border-color: #aaaacc; color: var(--ink); }
-
-    .hero-tags { display: flex; flex-wrap: wrap; gap: 8px; }
-    .htag { font-size: 12px; font-family: 'DM Mono', monospace; padding: 4px 11px; border-radius: 100px; border: 1px solid var(--border); background: var(--surface); color: var(--ink-muted); }
-    .htag.blue { background: var(--accent-light); color: #2040c0; border-color: #c8d4f8; }
-    .htag.teal { background: var(--teal-light); color: #0a6b52; border-color: #a0ddc8; }
-    .htag.coral { background: var(--coral-light); color: #b33820; border-color: #f4c0ae; }
-
-    .slabel { font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 2.5rem; }
-
-    .focus-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; }
-    .focus-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.4rem 1.25rem; transition: border-color 0.15s, transform 0.15s; }
-    .focus-card:hover { border-color: #b8b8d8; transform: translateY(-2px); }
-    .ficon { width: 34px; height: 34px; border-radius: 8px; margin-bottom: 0.9rem; display: flex; align-items: center; justify-content: center; font-size: 17px; }
-    .ficon.blue { background: var(--accent-light); }
-    .ficon.teal { background: var(--teal-light); }
-    .ficon.coral { background: var(--coral-light); }
-    .ficon.amber { background: var(--amber-light); }
-    .focus-card h3 { font-size: 13.5px; font-weight: 500; margin-bottom: 0.35rem; }
-    .focus-card p { font-size: 12.5px; color: var(--ink-muted); line-height: 1.55; }
-
-    .projects-list { display: flex; flex-direction: column; gap: 18px; }
-    .pcard { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.75rem; display: grid; grid-template-columns: 1fr auto; gap: 1rem 1.5rem; align-items: start; transition: border-color 0.15s, transform 0.15s; }
-    .pcard:hover { border-color: #b0b0cc; transform: translateY(-2px); }
-    .pcard.featured { border-color: #c4cffa; background: #fafbff; }
-    .pcard.dim { background: #fafafa; }
-    .pcard.dim h3 { color: var(--ink-muted); }
-    .pcard.dim .pmeta { color: var(--ink-faint); }
-
-    .pmeta { font-size: 10.5px; font-weight: 500; letter-spacing: 0.11em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.45rem; }
-    .pcard h3 { font-size: 16px; font-weight: 500; letter-spacing: -0.01em; margin-bottom: 0.5rem; }
-    .pcard p { font-size: 13.5px; color: var(--ink-muted); line-height: 1.65; max-width: 620px; }
-    .ptags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 1rem; }
-    .ptag { font-size: 11.5px; font-family: 'DM Mono', monospace; padding: 3px 8px; border-radius: 4px; background: #f0f0f5; color: var(--ink-muted); }
-    .plink { font-size: 13px; color: var(--accent); text-decoration: none; white-space: nowrap; display: flex; align-items: center; gap: 4px; padding: 6px 14px; border: 1px solid #c4cffa; border-radius: var(--radius-sm); height: fit-content; transition: background 0.12s; }
-    .plink:hover { background: var(--accent-light); }
-
-    .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 28px; }
-    .sg-label { font-size: 11.5px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 10px; }
-    .pills { display: flex; flex-wrap: wrap; gap: 6px; }
-    .pill { font-size: 12.5px; font-family: 'DM Mono', monospace; padding: 4px 10px; border-radius: 6px; border: 1px solid var(--border); color: var(--ink-muted); background: var(--surface); }
-
-    .exp-list { display: flex; flex-direction: column; gap: 32px; }
-    .exp-item { display: grid; grid-template-columns: 155px 1fr auto; gap: 1.5rem; align-items: start; }
-    .exp-item.no-links { grid-template-columns: 155px 1fr; }
-    .exp-date { font-size: 12px; color: var(--ink-faint); font-family: 'DM Mono', monospace; line-height: 1.6; padding-top: 2px; }
-    .exp-content h3 { font-size: 15px; font-weight: 500; margin-bottom: 2px; }
-    .exp-org { font-size: 13px; color: var(--ink-muted); margin-bottom: 8px; }
-    .exp-content ul { padding-left: 1.1rem; font-size: 13.5px; color: var(--ink-muted); line-height: 1.7; }
-    .exp-content ul li { margin-bottom: 3px; }
-    .exp-links { display: flex; flex-direction: column; gap: 6px; }
-
-    #contact { text-align: center; padding: 5rem 0 4rem; }
-    .contact-rule { width: 40px; height: 2px; background: var(--border); border-radius: 2px; margin: 0 auto 3rem; }
-    #contact h2 { font-size: 2.2rem; font-weight: 300; letter-spacing: -0.03em; margin-bottom: 0.75rem; }
-    #contact p { color: var(--ink-muted); margin-bottom: 2rem; }
-    .contact-links { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
-
-    footer { border-top: 1px solid var(--border); padding: 1.5rem 2rem; text-align: center; font-size: 12px; color: var(--ink-faint); }
-
-    @media (max-width: 620px) {
-      .exp-item { grid-template-columns: 1fr; gap: 0.3rem; }
-      .exp-item.no-links { grid-template-columns: 1fr; }
-      .exp-links { flex-direction: row; flex-wrap: wrap; }
-      .pcard { grid-template-columns: 1fr; }
-      nav .nav-links { display: none; }
-      h1 { font-size: 2.2rem; }
-      #back-to-top { bottom: 1.25rem; right: 1.25rem; }
-    }
-  </style>
+<script>
+  try { const t = localStorage.getItem('theme'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,500&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
 
 <a id="back-to-top" href="#hero" aria-label="Back to top">
-  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-    <path d="M8 12V4M4 7l4-4 4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-  </svg>
+  <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 12V4M4 7l4-4 4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
 </a>
 
-<nav>
+<nav aria-label="Main">
   <a href="#hero" class="nav-logo">Yuying Jin</a>
-  <ul class="nav-links">
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#experience">Experience</a></li>
-    <li><a href="#education">Education</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="#how">How I work</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="theme-toggle" type="button" aria-label="Switch theme">
+      <svg class="sun" width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="3" stroke="currentColor" stroke-width="1.4"/><path d="M8 1.5v1.6M8 12.9v1.6M1.5 8h1.6M12.9 8h1.6M3.4 3.4l1.1 1.1M11.5 11.5l1.1 1.1M3.4 12.6l1.1-1.1M11.5 4.5l1.1-1.1" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+      <svg class="moon" width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M13.5 9.6A5.6 5.6 0 0 1 6.4 2.5a5.6 5.6 0 1 0 7.1 7.1Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
+    </button>
+  </div>
 </nav>
 
-<div class="container">
+<main class="container">
 
+  <!-- HERO -->
   <section id="hero">
-    <div class="eyebrow">Open to work · Boston, MA · May 2026</div>
-    <h1>I build systems<br>that <strong>think and ship.</strong></h1>
-    <p class="hero-desc">
-      Software engineer focused on AI-integrated system design — embedding LLM and computer vision
-      capabilities into practical, end-to-end applications. I bring a product-minded approach to
-      architecture decisions: designing modular systems, owning features from concept to
-      implementation, and solving the real problems behind the requirements.
-    </p>
-    <div class="hero-actions">
-      <a href="mailto:jin.yuyin@northeastern.edu" class="btn btn-dark">
-        <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><rect x="1" y="3" width="14" height="10" rx="2" stroke="white" stroke-width="1.5"/><path d="M1 5l7 5 7-5" stroke="white" stroke-width="1.5"/></svg>
-        Get in touch
-      </a>
-      <a href="https://github.com/Yuying-Jin" target="_blank" class="btn btn-outline">GitHub ↗</a>
-      <a href="https://linkedin.com/in/yuying-jin999" target="_blank" class="btn btn-outline">LinkedIn ↗</a>
-    </div>
-    <div class="hero-tags">
-      <span class="htag teal">AI Integration</span>
-      <span class="htag teal">LLM · Computer Vision</span>
-      <span class="htag blue">System Design</span>
-      <span class="htag blue">Backend / APIs</span>
-      <span class="htag blue">Java · Python</span>
-      <span class="htag coral">Full-Stack</span>
-    </div>
-  </section>
+    <div class="hero-grid">
+      <div>
+        <p class="eyebrow">Developer · Boston, MA</p>
+        <h1>Tell me what's wrong. I'll find what's actually needed, and build it to <em>keep running.</em></h1>
+        <p class="hero-desc">
+          I'm Yuying Jin. I start from the people who will use a system after it ships,
+          and design the data, the workflow and the handoff around what they actually need.
+        </p>
+        <div class="hero-actions">
+          <a href="mailto:jin.yuyin@northeastern.edu" class="btn btn-dark">Get in touch</a>
+          <a href="https://github.com/Yuying-Jin" target="_blank" rel="noopener" class="btn btn-outline">GitHub ↗</a>
+          <a href="https://www.linkedin.com/in/yuying-jin999" target="_blank" rel="noopener" class="btn btn-outline">LinkedIn ↗</a>
+        </div>
+        <ul class="hero-tags" aria-label="Focus areas">
+          <li class="htag">Requirements analysis</li>
+          <li class="htag">System design</li>
+          <li class="htag">Workflow design</li>
+          <li class="htag">Full-stack web</li>
+        </ul>
+      </div>
 
-  <section id="focus">
-    <p class="slabel">What I do</p>
-    <div class="focus-grid">
-      <div class="focus-card">
-        <div class="ficon teal">🤖</div>
-        <h3>AI Integration</h3>
-        <p>Embedding LLMs and ML models into real products — prompt pipelines, knowledge grounding, and practical inference workflows.</p>
-      </div>
-      <div class="focus-card">
-        <div class="ficon blue">⚙️</div>
-        <h3>System Design</h3>
-        <p>Multi-component architectures with clear module boundaries, inter-service communication, and decisions that hold up over time.</p>
-      </div>
-      <div class="focus-card">
-        <div class="ficon coral">📱</div>
-        <h3>Full-Stack Product</h3>
-        <p>End-to-end ownership from database schema and REST APIs to polished React and React Native interfaces.</p>
-      </div>
-      <div class="focus-card">
-        <div class="ficon amber">🔍</div>
-        <h3>Backend & APIs</h3>
-        <p>Clean architecture, design patterns, and reliable business logic — built to be maintainable, not just functional.</p>
+      <div class="node-diagram" aria-hidden="true">
+        <svg viewBox="0 0 260 260">
+          <path class="path p1" d="M40,45 C70,75 90,95 130,130" />
+          <path class="path p2" d="M220,45 C190,75 170,95 130,130" />
+          <path class="path p3" d="M40,215 C70,185 90,165 130,130" />
+          <path class="path p4" d="M220,215 C190,185 170,165 130,130" />
+
+          <circle class="leaf" cx="40" cy="45" r="27"/>
+          <text x="40" y="49" text-anchor="middle">NEED</text>
+
+          <circle class="leaf" cx="220" cy="45" r="27"/>
+          <text x="220" y="49" text-anchor="middle">DATA</text>
+
+          <circle class="leaf" cx="40" cy="215" r="27"/>
+          <text x="40" y="219" text-anchor="middle">PEOPLE</text>
+
+          <circle class="leaf" cx="220" cy="215" r="27"/>
+          <text x="220" y="219" text-anchor="middle">PROCESS</text>
+
+          <circle class="core" cx="130" cy="130" r="31"/>
+          <text class="core-label" x="130" y="127" text-anchor="middle">the</text>
+          <text class="core-label" x="130" y="139" text-anchor="middle">system</text>
+        </svg>
       </div>
     </div>
   </section>
 
-  <section id="projects">
-    <p class="slabel">Selected projects</p>
-    <div class="projects-list">
-
-      <div class="pcard featured">
-        <div>
-          <p class="pmeta">AI Integration · System Architecture · Java</p>
-          <h3>AI Chatbot with Knowledge Base</h3>
-          <p>
-            Designed the overall system architecture and led LLM integration via Gemini API —
-            implementing a knowledge base construction layer using Java Reflection, defining
-            module boundaries that enabled teammates to independently develop the UI and chat
-            history components. The prompt pipeline combines user input, encoded domain knowledge,
-            and prompt instructions, delivering ~1s responses with guardrails for out-of-scope queries.
-            Business logic, knowledge encoding, and UI are fully decoupled.
-          </p>
-          <div class="ptags">
-            <span class="ptag">Java</span>
-            <span class="ptag">JavaFX</span>
-            <span class="ptag">Gemini API</span>
-            <span class="ptag">Prompt Pipeline</span>
-            <span class="ptag">System Architecture</span>
-          </div>
-        </div>
-        <a href="https://github.com/Yuying-Jin/Chatbot-Lexa" target="_blank" class="plink">GitHub ↗</a>
+  <!-- HOW I WORK -->
+  <section id="how">
+    <h2 class="eyebrow">How I work</h2>
+    <div class="how-grid">
+      <div class="how-block">
+        <h3>Find the need behind the request</h3>
+        <p>A request usually arrives as a solution. I ask who uses the thing after launch, and what goes wrong for them today.</p>
+        <p class="seen-in">Seen in <a href="#gospel-arts">Gospel Arts</a>, <a href="#scheduleease">ScheduleEase</a></p>
       </div>
-
-      <div class="pcard featured">
-        <div>
-          <p class="pmeta">ML · System Design · Python</p>
-          <h3>Measuring Student Engagement using Machine Learning</h3>
-          <p>
-            Designed and owned the MVC architecture for a desktop app that continuously captures
-            and analyzes student engagement during live sessions. Built the full View layer and
-            Controller logic coordinating three independently developed modules — eye tracking,
-            facial expression recognition (DeepFace), and Firebase database — into a single stable
-            application. Diagnosed and resolved a cross-module camera resource conflict by
-            centralizing instantiation in the DataRouter class, ensuring a single shared instance
-            across all components within a session.
-          </p>
-          <div class="ptags">
-            <span class="ptag">Python</span>
-            <span class="ptag">PyQt5</span>
-            <span class="ptag">MVC Architecture</span>
-            <span class="ptag">OpenCV</span>
-            <span class="ptag">DeepFace</span>
-            <span class="ptag">Firebase</span>
-          </div>
-        </div>
-        <a href="https://github.com/neha26pp/MLEngagementTool" target="_blank" class="plink">GitHub ↗</a>
+      <div class="how-block">
+        <h3>Turn a vision into decisions</h3>
+        <p>Clients without a technical background shouldn't face a blank page. Every open question reaches them with a draft, a limit and a few options, plus my recommendation.</p>
+        <p class="seen-in">Seen in <a href="work/gospel-arts/#collaboration">Gospel Arts</a></p>
       </div>
-
-      <div class="pcard featured">
-        <div>
-          <p class="pmeta">Full-Stack · Mobile · REST API</p>
-          <h3>Doggy Detection Mobile App</h3>
-          <p>
-            Independently designed and built the entire client-server system: defined the MongoDB
-            schema, implemented custom user authentication, engineered detection history storage,
-            and integrated Roboflow's pre-trained breed detection model via API. Made every
-            architecture decision solo — from REST endpoint design to client-side state management.
-            Delivers results in ~2s with breed name, sample images, and descriptions.
-          </p>
-          <div class="ptags">
-            <span class="ptag">React Native</span>
-            <span class="ptag">Node.js</span>
-            <span class="ptag">MongoDB</span>
-            <span class="ptag">REST API</span>
-            <span class="ptag">Expo</span>
-          </div>
-        </div>
-        <a href="https://github.com/Yuying-Jin/DoggyDetection" target="_blank" class="plink">GitHub ↗</a>
+      <div class="how-block">
+        <h3>Fix it where it starts</h3>
+        <p>When a bug shows up on screen, I trace it back to the data or the shared resource behind it and fix it there.</p>
+        <p class="seen-in">Seen in <a href="work/frankenstein-variorum/#where-to-fix">Frankenstein Variorum</a>, <a href="#student-engagement">Student Engagement</a></p>
       </div>
-
-      <div class="pcard">
-        <div>
-          <p class="pmeta">Backend · Product · Java</p>
-          <h3>ScheduleEase</h3>
-          <p>
-            Built the course recommendation module within a schedule generation system.
-            Modeled major and elective requirement rules as structured JSON based on official
-            program requirements, and implemented a rule-matching engine to generate personalized
-            course suggestions. Parsed student transcript data from XHTML to JSON, feeding
-            structured input into the recommendation pipeline end-to-end.
-          </p>
-          <div class="ptags">
-            <span class="ptag">Java</span>
-            <span class="ptag">Spring Boot</span>
-            <span class="ptag">Data Parsing</span>
-            <span class="ptag">Rule Engine</span>
-            <span class="ptag">Full-Stack</span>
-          </div>
-        </div>
-        <a href="https://github.com/Yuying-Jin/SE411/tree/main/ScheduleEase" target="_blank" class="plink">GitHub ↗</a>
+      <div class="how-block">
+        <h3>Design the handoff</h3>
+        <p>The people who own a system should be able to run it without calling me. I build the tools, checks and docs that make that true.</p>
+        <p class="seen-in">Seen in <a href="#gospel-arts">Gospel Arts</a>, <a href="#web-developer">Web Developer</a></p>
       </div>
-
-      <div class="pcard">
-        <div>
-          <p class="pmeta">System Design · Java</p>
-          <h3>Smartphone Ecosystem Simulation</h3>
-          <p>
-            Led development of a Java desktop app modeling a multi-enterprise production pipeline
-            across four enterprises: Smartphone, Component Supplier, EMS, and Logistics.
-            Designed inter-enterprise work request routing and ownership boundaries to reflect
-            real-world delegation patterns from design through production and distribution.
-          </p>
-          <div class="ptags">
-            <span class="ptag">Java Swing</span>
-            <span class="ptag">OOP</span>
-            <span class="ptag">System Design</span>
-            <span class="ptag">Architecture</span>
-          </div>
-        </div>
-        <a href="https://github.com/Yuying-Jin/SmartphoneEcosystem" target="_blank" class="plink">GitHub ↗</a>
-      </div>
-
-      <div class="pcard">
-        <div>
-          <p class="pmeta">Computer Vision · Python</p>
-          <h3>Bird Species Classification</h3>
-          <p>
-            Proposed and trained YOLOv8 for bird species classification after researching model
-            alternatives, achieving 99% accuracy on a 2GB image dataset with GPU acceleration.
-            Implemented model inference integration into a teammate-built Flask web application,
-            enabling interactive species identification.
-          </p>
-          <div class="ptags">
-            <span class="ptag">Python</span>
-            <span class="ptag">YOLOv8</span>
-            <span class="ptag">Computer Vision</span>
-            <span class="ptag">Flask</span>
-          </div>
-        </div>
-        <a href="https://github.com/Yuying-Jin/bird-classification" target="_blank" class="plink">GitHub ↗</a>
-      </div>
-
-      <div class="pcard dim">
-        <div>
-          <p class="pmeta">ML Background · Distributed Training</p>
-          <h3>Parallel Computing for Visual Question Answering (VQA)</h3>
-          <p>
-            Implemented distributed Visual Question Answering training with FSDP and DDP in PyTorch,
-            using CLIP for multimodal feature extraction and Transformer for cross-modal fusion.
-            Configured and ran experiments on HPC clusters via Slurm with mixed-precision optimization.
-          </p>
-          <div class="ptags">
-            <span class="ptag">PyTorch</span>
-            <span class="ptag">FSDP / DDP</span>
-            <span class="ptag">CLIP</span>
-            <span class="ptag">Slurm</span>
-            <span class="ptag">HPC</span>
-          </div>
-        </div>
-        <a href="https://github.com/BUG139632/CSYE7105_VQA_project" target="_blank" class="plink">GitHub ↗</a>
-      </div>
-
-    </div>
-  </section>
-
-  <section id="skills">
-    <p class="slabel">Technical skills</p>
-    <div class="skills-grid">
-      <div>
-        <p class="sg-label">Languages</p>
-        <div class="pills">
-          <span class="pill">Python</span>
-          <span class="pill">Java</span>
-          <span class="pill">JavaScript</span>
-          <span class="pill">TypeScript</span>
-          <span class="pill">C/C++</span>
-          <span class="pill">Shell</span>
-        </div>
-      </div>
-      <div>
-        <p class="sg-label">Backend & Systems</p>
-        <div class="pills">
-          <span class="pill">Spring Boot</span>
-          <span class="pill">Node.js</span>
-          <span class="pill">REST APIs</span>
-          <span class="pill">System Design</span>
-          <span class="pill">Design Patterns</span>
-          <span class="pill">MongoDB</span>
-          <span class="pill">SQL Server</span>
-        </div>
-      </div>
-      <div>
-        <p class="sg-label">AI & ML</p>
-        <div class="pills">
-          <span class="pill">LLM Integration</span>
-          <span class="pill">Gemini API</span>
-          <span class="pill">Ollama</span>
-          <span class="pill">PyTorch</span>
-          <span class="pill">TensorFlow</span>
-          <span class="pill">YOLOv8</span>
-          <span class="pill">CLIP</span>
-          <span class="pill">OpenCV</span>
-        </div>
-      </div>
-      <div>
-        <p class="sg-label">Frontend & Tools</p>
-        <div class="pills">
-          <span class="pill">React</span>
-          <span class="pill">React Native</span>
-          <span class="pill">Astro</span>
-          <span class="pill">Git</span>
-          <span class="pill">Figma</span>
-        </div>
+      <div class="how-block">
+        <h3>Design first, then build</h3>
+        <p>Before writing code, I settle the architecture and decide where the system needs room to grow. I'd rather design that flexibility myself than hand the requirements to an AI and let it decide.</p>
+        <p class="seen-in">Seen in <a href="#ai-chatbot">AI Chatbot</a>, <a href="work/gospel-arts/#collaboration">Gospel Arts</a></p>
       </div>
     </div>
   </section>
 
+  <!-- PROFESSIONAL & RESEARCH EXPERIENCE -->
   <section id="experience">
-    <p class="slabel">Experience</p>
-    <div class="exp-list">
+    <h2 class="eyebrow">Professional &amp; Research Experience</h2>
 
-      <div class="exp-item">
-        <div class="exp-date">Jun 2022 –<br>Dec 2023</div>
-        <div class="exp-content">
-          <h3>Frankenstein Variorum Research Assistant & Co-author</h3>
-          <p class="exp-org">Penn State Behrend · Digital Humanities Lab · Erie, PA</p>
-          <ul>
-            <li>Collaborated with faculty to debug and optimize individual data processing steps for TEI/XML-encoded data, improving accuracy of cross-version text comparison across five editions of <em>Frankenstein</em>.</li>
-            <li>Automated the full XSLT/Python pipeline via shell scripting across hundreds of TEI files, reducing processing time from infeasible manual effort to ~2.5 hours.</li>
-            <li>Rebuilt the Variorum Viewer UI in React and Astro, making architecture decisions between application-layer and pipeline-layer solutions to ensure data rendered correctly on the frontend.</li>
-            <li>Conceived and implemented cross-version navigation that automatically scrolls to and highlights the corresponding segment in the edition's representative color, enabling users to seamlessly compare the same passage across versions.</li>
-            <li>Implemented a character-diff visualization system that quantifies textual variance between corresponding segments and encodes divergence magnitude as a color gradient, including handling of omitted segments.</li>
-            <li>Presented at the 2023 Keystone DH Conference and contributed to digital humanities conference presentations as co-author in 2024.</li>
-          </ul>
-        </div>
-        <div class="exp-links">
-          <a href="https://github.com/FrankensteinVariorum" target="_blank" class="plink">GitHub ↗</a>
-          <a href="https://frankensteinvariorum.org/" target="_blank" class="plink">Live site ↗</a>
-        </div>
+    <article class="case" id="gospel-arts">
+      <div class="case-head">
+        <h3>Gospel Arts Website</h3>
+        <span class="case-date">May 2025 – Present</span>
       </div>
+      <p class="case-org">Website Architect &amp; Developer · Boston, MA</p>
+      <ul class="case-badges"><li>Client collaboration</li><li>Requirements</li><li>Workflow design</li><li>Visual design</li></ul>
+      <div class="case-rows">
+        <div class="case-row"><div class="k">Starting point</div><div class="v">An artist who paints a scripture every week came with a list of wishes and no idea what a professional website has to consider. They imagine; I make it work.</div></div>
+        <div class="case-row"><div class="k">How I work</div><div class="v">I ask the questions they didn't know to ask, check each new idea against what it would take, and bring every open decision with a draft and my recommendation.</div></div>
+        <div class="case-row"><div class="k">What I design</div><div class="v">Each one-off request becomes a workflow they can repeat. "I'd like to upload my own work" became a full artwork management flow with guides. "Watermark every painting" became a watermark step in every future upload. I also designed the site's look, drawn from the artist's paintings and from everyday life.</div></div>
+      </div>
+      <ul class="case-tools" aria-label="Tools"><li class="pill">Next.js</li><li class="pill">TypeScript</li><li class="pill">Sanity CMS</li><li class="pill">i18n</li><li class="pill">Vercel</li><li class="pill">Cloudflare</li><li class="pill">Playwright</li></ul>
+      <div class="case-links">
+        <a href="work/gospel-arts/" class="case-link primary">Read the Gospel Arts case study →</a>
+        <a href="https://www.sjgart.org/" target="_blank" rel="noopener" class="case-link">Live site ↗</a>
+      </div>
+    </article>
+
+    <article class="case" id="frankenstein-variorum">
+      <div class="case-head">
+        <h3>Frankenstein Variorum</h3>
+        <span class="case-date">Jun 2022 – Dec 2023</span>
+      </div>
+      <p class="case-org">Research Assistant &amp; Co-author · Digital Humanities Lab, Penn State</p>
+      <ul class="case-badges"><li>Pipeline automation</li><li>Viewer UX</li><li>Root-cause fixes</li></ul>
+      <div class="case-rows">
+        <div class="case-row"><div class="k">Starting point</div><div class="v">A multi-year digital research project comparing five editions of <em>Frankenstein</em> (1816–1831). I started by running its data scripts, proofreading the output and logging errors.</div></div>
+        <div class="case-row"><div class="k">How it grew</div><div class="v">Pair programming with my advisor, Elisa Beshero-Bondar, I worked out what the scripts did and proposed fixes for the errors behind them. Once debugging had shown me what every code file did, I took on automating the collation step and then the post-collation pipeline, more than a dozen scripts that now run as one command in about 2.5 hours, so new proofreaders could process data themselves while I fixed what their feedback found.</div></div>
+        <div class="case-row"><div class="k">Then the website</div><div class="v">I proposed testing the processed data on the website, learned React from zero on a starter Astro project, and rebuilt the prototype into the project's public viewer: smooth switching between editions, jumping straight to a variant in context, and chapters that line up even when editions number them differently.</div></div>
+        <div class="case-row"><div class="k">Outcome</div><div class="v">Code in five of the project's repositories, a co-author credit on the project, a talk at the 2023 Keystone Digital Humanities Conference, and a tool now used at other universities.</div></div>
+      </div>
+      <ul class="case-tools" aria-label="Tools"><li class="pill">React</li><li class="pill">TypeScript</li><li class="pill">Astro</li><li class="pill">Shell</li><li class="pill">XSLT</li><li class="pill">TEI/XML</li></ul>
+      <div class="case-links">
+        <a href="work/frankenstein-variorum/" class="case-link primary">Read the Frankenstein Variorum case study →</a>
+        <a href="https://frankensteinvariorum.org/" target="_blank" rel="noopener" class="case-link">Frankenstein Variorum site ↗</a>
+        <a href="https://github.com/FrankensteinVariorum" target="_blank" rel="noopener" class="case-link">Source on GitHub ↗</a>
+      </div>
+    </article>
+
+    <article class="case" id="web-developer">
+      <div class="case-head">
+        <h3>Web Developer</h3>
+        <span class="case-date">Feb – May 2024</span>
+      </div>
+      <p class="case-org">Penn State Behrend</p>
+      <ul class="case-badges"><li>Non-technical handoff</li><li>Information architecture</li></ul>
+      <ul class="plain">
+        <li><strong>Gave a student club its website back.</strong> After the site's team graduated, its code sat in a GitHub repository nobody maintained. I moved it to WordPress, so new members can be given access and edit pages without a GitHub account or a developer.</li>
+        <li><strong>Gave a program's resources a home.</strong> The DIGIT program's links lived in one professor's Word document. I turned them into a categorized resource site with navigation that stays in view while scrolling.</li>
+      </ul>
+      <ul class="case-tools" aria-label="Tools"><li class="pill">WordPress</li><li class="pill">Divi</li><li class="pill">JavaScript</li></ul>
+    </article>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <h2 class="eyebrow">Selected Projects</h2>
+    <div class="proj-list">
+
+      <article class="proj-card" id="scheduleease">
+        <p class="proj-num">Requirements modeling · 2-person team</p>
+        <div class="proj-head"><h3>ScheduleEase</h3><span class="case-date">2023</span></div>
+        <p><span class="proj-label">The question</span>"What do I still need to graduate?" Penn State's CS and SE degree requirements are nested and full of exceptions, and students lose track of them.</p>
+        <p><span class="proj-label">Actually needed</span>A trustworthy answer, checked against every rule, built from data students actually have.</p>
+        <p><span class="proj-label">What I did</span><strong>Rules too tangled to check by hand.</strong> The requirements nest and carry exceptions, so I modeled them as structured data that a rule-matching engine can check a student's record against.</p>
+        <p><strong>No source for completed courses.</strong> There was no API to pull them, so I used the unofficial transcript students can export from the school portal, and wrote a parser that gets clean course records out of its malformed HTML.</p>
+        <p><span class="proj-label">Result</span>Caught real discrepancies before they could mislead a student, such as honors sections not being counted toward the base course they satisfy.</p>
+        <ul class="proj-tags" aria-label="Tools"><li class="proj-tag">Java</li><li class="proj-tag">Spring Boot</li><li class="proj-tag">Rule engine</li><li class="proj-tag">HTML parsing</li></ul>
+        <a href="https://github.com/Yuying-Jin/SE411/tree/main/ScheduleEase" target="_blank" rel="noopener" class="proj-link">ScheduleEase on GitHub ↗</a>
+      </article>
+
+      <article class="proj-card" id="student-engagement">
+        <p class="proj-num">Systems integration · Senior capstone, 4-person team</p>
+        <div class="proj-head"><h3>Measuring Student Engagement</h3><span class="case-date">2023 – 2024</span></div>
+        <p><span class="proj-label">The question</span>Researchers wanted to measure how engaged students are while they read and watch course material. Teammates built the eye tracking and facial-expression analysis.</p>
+        <p><span class="proj-label">Actually needed</span>One ready-to-run tool that takes a participant through a whole session, from consent and a pre-survey through the reading, video and quiz, while those modules record alongside, without crashing partway.</p>
+        <p><span class="proj-label">What I did</span><strong>Every participant must go through the same steps.</strong> I built the controller that runs the session in order, from consent to the final quiz, while my teammates' modules record alongside.</p>
+        <p><strong>Study materials must be easy to read.</strong> The consent form, instructions, surveys, and each reading or video with its quiz live in YAML files, one folder per material. YAML's indented syntax reads like the Python codebase, so people and scripts can both read it.</p>
+        <p><strong>Sessions must run reliably.</strong> Every so often, without a clear pattern, a session crashed. The lab computer has one webcam, but each part of the app opened its own connection to it, and now and then those connections collided. I made the app open the camera once and share that one connection with every part that needs it, which ended the random crashes.</p>
+        <p><span class="proj-label">Result</span>Ran real sessions with 17 participants and produced a dataset the team validated their models against.</p>
+        <ul class="proj-tags" aria-label="Tools"><li class="proj-tag">Python</li><li class="proj-tag">PyQt5</li><li class="proj-tag">OpenCV</li></ul>
+        <a href="https://github.com/neha26pp/MLEngagementTool" target="_blank" rel="noopener" class="proj-link">Engagement tool on GitHub ↗</a>
+      </article>
+
+      <article class="proj-card" id="ai-chatbot">
+        <p class="proj-num">Applied AI · Four-day build · 3-person team</p>
+        <div class="proj-head"><h3>AI Chatbot with Knowledge Base</h3><span class="case-date">2025</span></div>
+        <p><span class="proj-label">The question</span>How can an existing desktop app get a chatbot that answers from its own data, without a complex integration?</p>
+        <p><span class="proj-label">What I did</span><strong>Plug into any app, with any data.</strong> Even in a four-day build, I designed the architecture first: the knowledge base, the language-model client and the chat history sit behind interfaces, so each can be swapped without touching the others, and two teammates could build the rest in parallel. The knowledge base reads any object's fields with Java Reflection, so pointing the chatbot at new data means handing it different objects, not writing new code. The prompt keeps answers to that data, and the chatbot declines when the data can't answer.</p>
+        <ul class="proj-tags" aria-label="Tools"><li class="proj-tag">Java</li><li class="proj-tag">Gemini API</li><li class="proj-tag">JavaFX</li></ul>
+        <a href="https://github.com/Yuying-Jin/Chatbot-Lexa" target="_blank" rel="noopener" class="proj-link">AI Chatbot on GitHub ↗</a>
+      </article>
 
     </div>
   </section>
 
+  <!-- SKILLS -->
+  <section id="skills">
+    <h2 class="eyebrow">Tools I reach for</h2>
+    <div class="skill-rows">
+      <div class="skill-row"><h3>Websites &amp; web apps</h3><p>Next.js, React, TypeScript, Astro, i18n, accessibility (WCAG 2.1 AA)</p></div>
+      <div class="skill-row"><h3>Content &amp; data</h3><p>Sanity CMS, Python, HTML/XML parsing, XSLT, shell</p></div>
+      <div class="skill-row"><h3>Backend &amp; APIs</h3><p>Java Spring Boot, Node.js, REST, MongoDB, SQL Server</p></div>
+      <div class="skill-row"><h3>Shipping &amp; quality</h3><p>Vercel previews, GitHub Actions, Playwright, SEO and structured data</p></div>
+      <div class="skill-row"><h3>Mobile</h3><p>React Native, Expo</p></div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
   <section id="education">
-    <p class="slabel">Education</p>
-    <div class="exp-list">
-
-      <div class="exp-item no-links">
-        <div class="exp-date">May 2026</div>
-        <div class="exp-content">
-          <h3>MS Information Systems</h3>
-          <p class="exp-org">Northeastern University · Boston, MA</p>
+    <h2 class="eyebrow">Education</h2>
+    <div class="edu-list">
+      <div class="edu-item">
+        <div class="edu-date">May 2026</div>
+        <div>
+          <h3>MS, Information Systems</h3>
+          <p>Northeastern University · Boston, MA</p>
         </div>
       </div>
-
-      <div class="exp-item no-links">
-        <div class="exp-date">May 2024</div>
-        <div class="exp-content">
-          <h3>BS Computer Science · BA Digital Media, Arts & Technology</h3>
-          <p class="exp-org">Penn State Erie, The Behrend College · Erie, PA</p>
+      <div class="edu-item">
+        <div class="edu-date">May 2024</div>
+        <div>
+          <h3>BS, Computer Science &amp; BA, Digital Media, Arts and Technology</h3>
+          <p>Double major · Penn State Behrend · Erie, PA</p>
         </div>
       </div>
-
     </div>
   </section>
 
+  <!-- CONTACT -->
   <section id="contact">
-    <div class="contact-rule"></div>
-    <h2>Let's build something.</h2>
-    <p>Open to AI application, backend, and full-stack engineering roles — available from Summer 2026.</p>
+    <p class="eyebrow" style="justify-content:center;">Let's talk</p>
+    <h2 class="title">Have a problem that needs untangling?</h2>
+    <p class="sub">Tell me what's wrong, and I'll come back with what I think is actually needed. Based in Boston, open to relocating.</p>
     <div class="contact-links">
       <a href="mailto:jin.yuyin@northeastern.edu" class="btn btn-dark">jin.yuyin@northeastern.edu</a>
-      <a href="https://github.com/Yuying-Jin" target="_blank" class="btn btn-outline">GitHub ↗</a>
-      <a href="https://linkedin.com/in/yuying-jin999" target="_blank" class="btn btn-outline">LinkedIn ↗</a>
+      <a href="https://github.com/Yuying-Jin" target="_blank" rel="noopener" class="btn btn-outline">GitHub ↗</a>
+      <a href="https://www.linkedin.com/in/yuying-jin999" target="_blank" rel="noopener" class="btn btn-outline">LinkedIn ↗</a>
     </div>
   </section>
 
-</div>
+</main>
 
-<footer>© 2026 Yuying Jin · Boston, MA · (857) 919-8416</footer>
+<footer>© 2026 Yuying Jin · Boston, MA</footer>
 
-<script>
-  const btn = document.getElementById('back-to-top');
-  window.addEventListener('scroll', () => {
-    btn.classList.toggle('visible', window.scrollY > 400);
-  });
-
-  const sections = document.querySelectorAll('section[id]');
-  const navLinks = document.querySelectorAll('.nav-links a');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        navLinks.forEach(a => a.classList.remove('active'));
-        const active = document.querySelector(`.nav-links a[href="#${entry.target.id}"]`);
-        if (active) active.classList.add('active');
-      }
-    });
-  }, { rootMargin: '-40% 0px -55% 0px' });
-  sections.forEach(s => observer.observe(s));
-</script>
-
+<script src="assets/site.js" defer></script>
 </body>
 </html>
