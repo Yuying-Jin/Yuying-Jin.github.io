@@ -123,7 +123,7 @@
     <div class="prose">
       <h2>From the data to the website</h2>
       <p>Once the data problems were mostly solved, I proposed checking whether the processed data actually worked on the website. The project's web technology wasn't Elisa's area at the time, so she introduced me to Raff Viglianti, who had been on the project for years and had built its technical prototype.</p>
-      <p>The prototype was built with Gatsby, CETEIcean and React. I studied all three and found them hard; I didn't even know where to begin. Raff then suggested React and Astro and gave me a small starter Astro project. From there I learned React from zero, built the new viewer, and moved the old site's content onto the new stack. This was before tools like Cursor or Claude.</p>
+      <p>The prototype was built with Gatsby, CETEIcean and React. I studied all three and found them hard; I didn't even know where to begin. Raff then suggested React and Astro and gave me a small starter Astro project. From there I learned React from zero, built the new viewer, and moved the old site onto the new stack, its content and its look, matching the original design. This was before tools like Cursor or Claude.</p>
     </div>
   </section>
 
@@ -136,6 +136,8 @@
         <li><strong>Landing on the right line.</strong> When a reader jumps from the side panel to see a variant in its own context, the page scrolls to that passage and highlights it, so they never have to hunt for it.</li>
         <li><strong>Chapters that don't line up.</strong> The same passage can sit under different chapter numbers in different editions. The edition and chapter selector handles that, so readers reach the same content wherever it was numbered.</li>
         <li><strong>Readable without color.</strong> Hotspots are gray, and the highlight colors that mark each edition are chosen so colorblind readers can tell them apart. For readers who see no color at all, a highlighted hotspot also gets a border above and below. Text that is missing from an edition is also marked differently from text that was changed, so a gap is never mistaken for a major revision.</li>
+        <li><strong>The handwritten edits, on the page.</strong> In the manuscript and the Thomas copy, deleted text shows as struck through, and Mary Shelley's own notes always appear, set apart from the text. Notes the project team added can be shown or hidden, and readers can toggle the variants and the text the same way.</li>
+        <li><strong>Back to the original pages.</strong> A passage from the manuscript links to its page in the Shelley-Godwin Archive. Where Mary Shelley added, deleted or annotated text in the Thomas copy, a link opens the Morgan Library's image of that page.</li>
       </ul>
     </div>
   </section>
@@ -143,7 +145,8 @@
   <section id="where-to-fix">
     <div class="prose">
       <h2>Deciding where a fix belongs</h2>
-      <p>The website also became the place where remaining data errors showed up. For each one I had to decide whether it belonged in the website's code or back in the data processing, and I talked those calls through with Elisa. One character-rendering bug looked like a quick fix with a regex in the viewer. Testing turned up too many edge cases, so I fixed it in the XSLT post-processing instead.</p>
+      <p>Some errors were already in the data, but nothing about them looked wrong to a proofreader checking that the passages lined up. They only surfaced later in processing, often first on the website. Quotation marks were the hardest. Alongside each passage, the same files keep a normalized version of its words for comparison, written as a list with every word wrapped in quotation marks. The website turns that list into JSON to show it in the side panel, so a quotation mark inside the text itself has to be marked along the way, or it reads as the end of a word. On the website, quotes came out mismatched, and two of Mary Shelley's notes wouldn't open at all. (Issues <a href="https://github.com/FrankensteinVariorum/fv-web/issues/9" target="_blank" rel="noopener">#9 ↗</a> and <a href="https://github.com/FrankensteinVariorum/fv-web/issues/13" target="_blank" rel="noopener">#13 ↗</a>)</p>
+      <p>That took a judgment call. Fixing it in the website would have been faster: changing the data scripts meant rerunning them, and rerunning them meant proofreading the text all over again. But the edge cases kept multiplying, so I worked backward through every step that could affect quotation marks and fixed the problem in the XSLT post-processing, talking possible approaches through with Elisa along the way.</p>
     </div>
   </section>
 
@@ -151,7 +154,8 @@
     <div class="prose">
       <h2>Where it ended up</h2>
       <ul>
-        <li>Contributed code to five of the project's repositories, and was credited as a co-author of the project.</li>
+        <li>Contributed code to five of the project's repositories, including most of the viewer's code, and was credited as a co-author of the project.</li>
+        <li>Wrote the viewer's <a href="https://github.com/FrankensteinVariorum/fv-web#readme" target="_blank" rel="noopener">documentation ↗</a>: how its components fit together, how they use the data, and the steps to update the site after a new collation run.</li>
         <li>Presented at the 2023 Keystone Digital Humanities Conference.</li>
         <li>The tool is now used by faculty and students at other universities for research and coursework.</li>
       </ul>
