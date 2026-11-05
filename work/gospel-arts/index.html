@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Gospel Arts Website Case Study · Yuying Jin</title>
-<meta name="description" content="How I turned an artist's wishes into a trilingual gallery they run: the right questions, the right tools, and repeatable workflows.">
+<meta name="description" content="How I turned an artist's wishes into a trilingual gallery they run, by asking the technical questions early and turning requests into workflows.">
 <link rel="canonical" href="https://yuying-jin.github.io/work/gospel-arts/">
 <meta name="author" content="Yuying Jin">
 <meta name="theme-color" content="#f1f4f2" media="(prefers-color-scheme: light)">
@@ -23,11 +23,11 @@
   {
     "@context": "https://schema.org",
     "@type": "Article",
-    "headline": "Gospel Arts Website: the artist imagines it, I make it work",
+    "headline": "Gospel Arts Website: wishes in, workflows out",
     "description": "Case study: requirements discovery, client collaboration and workflow design for a trilingual online gallery.",
     "url": "https://yuying-jin.github.io/work/gospel-arts/",
     "inLanguage": "en",
-    "dateModified": "2026-10-29",
+    "dateModified": "2026-11-04",
     "author": { "@type": "Person", "@id": "https://yuying-jin.github.io/#me", "name": "Yuying Jin", "url": "https://yuying-jin.github.io/" },
     "about": ["Requirements analysis", "Workflow design", "Client collaboration", "Content management systems", "Internationalization"]
   },
@@ -78,12 +78,12 @@
     <p class="crumbs"><a href="../../">Yuying Jin</a> / <a href="../../#experience">Experience</a> / Gospel Arts Website</p>
     <p class="eyebrow">Case study</p>
     <h1>Wishes in. <em>Workflows</em> out.</h1>
-    <p class="cs-lede">An artist paints a scripture every week, and preachers pass each painting on over WeChat to readers across Southeast Asia and North America. They came with a list of wishes for a website and no idea what a professional site has to consider. My part was to turn those wishes into a system, and to keep it running well after each request was done.</p>
+    <p class="cs-lede">An artist paints a scripture every week, and preachers pass each painting on over WeChat to readers across Southeast Asia and North America. They came with a phased plan for a website and left the technical questions to me. My part was to turn that plan into a system, and to keep it running well after each request was done.</p>
     <dl class="cs-facts">
       <div><dt>Role</dt><dd>Website Architect &amp; Developer (independent)</dd></div>
       <div><dt>Timeline</dt><dd>Sep 2026 – Present</dd></div>
       <div><dt>Languages</dt><dd>English<br>Simplified Chinese<br>Traditional Chinese</dd></div>
-      <div><dt>Stack</dt><dd>Next.js, Sanity, Vercel, Cloudflare</dd></div>
+      <div><dt>Stack</dt><dd>Next.js + TypeScript, Sanity, Vercel, Cloudflare</dd></div>
     </dl>
     <div class="case-links" style="margin-top:1.8rem">
       <a href="https://www.sjgart.org/" target="_blank" rel="noopener" class="case-link primary">Visit the live site ↗</a>
@@ -93,30 +93,29 @@
   <section id="questions">
     <div class="prose">
       <h2>Asking what they didn't know to ask</h2>
-      <p>The first brief was a two-year plan in a few lines: a home page, browsing by theme, managing the artwork, news of exhibitions, a way to give feedback, a copyright notice, and later a shop and a team. I answered with a checklist of the questions each line hides. Who may upload, and does anything need review before it goes public? May visitors share or change what they download? Which languages come first? Who signs in, and how?</p>
-      <p>The paintings themselves were only image files, with no dates, scripture or any other text attached. Browsing by theme or by date needs that information, so I asked the artist to gather it first. They collected it into a spreadsheet and kept it in Dropbox with the images.</p>
-      <p>Other answers reshaped the plan. Asked how many subscribers to expect, the artist checked with the people who forward the paintings and came back with a much smaller, more realistic estimate. Later the artist learned that most readers are older people who only use a phone, opening links inside WeChat. From then on I designed the site for phones first.</p>
+      <p>The first brief was already a phased plan, from a home page and artwork browsing to, later, a nonprofit and a shop. I answered with the questions each item hides: who may upload, what needs review before it goes public, which languages come first, who signs in.</p>
+      <p>I also checked what the site would run on. The paintings had no dates or scripture references attached, and browsing by theme or date can't work without them, so I asked the artist to gather them first. When it turned out that readers open the site on phones inside WeChat, many of them older, I designed for phones first.</p>
     </div>
   </section>
 
   <section id="look">
     <div class="prose">
       <h2>A look made for these paintings</h2>
-      <p>The site's visual design is custom, drawn from the paintings the artist provided and from inspiration in everyday life, rather than from a template. The first sketch was a gallery page in deep blue-black and gold, and the artist said the colors and style were exactly what they loved. That direction grew into the stained-glass look the site has today, built in code and refined on live previews rather than in static mockups.</p>
+      <p>I was stuck on the interface for a week, until a visit to a Trinity church, where the stained-glass windows matched the artist's style. I wrote a prompt asking for the paintings to be shown the way a church shows its windows, and Claude generated the first gallery page, in deep blue-black and gold. The artist said the colors and style were exactly what they loved. I reworked it from there and carried the theme through the site: a church and its stained glass, with each painting as a spiritual window.</p>
     </div>
   </section>
 
   <section id="tools">
     <div class="prose">
       <h2>Choosing tools a non-technical team can live with</h2>
-      <p>I compared ways to manage the content and proposed the one that was easiest for people who aren't developers, cheapest to run, and still met every need. The artist's spreadsheet and Dropbox folder fed an early prototype, enough to design the pages and test how the paintings looked. Dropbox limits API access and wasn't stable enough to serve a live site, so it stayed in that stage, and the archive, hundreds of images and over 300 MB, moved into a content studio.</p>
+      <p>I compared ways to manage the content and proposed the one that was easiest for people who aren't developers, cheapest to run, and still met every need. The spreadsheet and Dropbox folder the artist put together fed an early prototype, enough to design the pages and test how the paintings looked. Dropbox limits API access and wasn't stable enough to serve a live site, so it stayed at that stage. The archive, hundreds of images and over 300 MB, moved into a content studio.</p>
     </div>
   </section>
 
   <section id="workflows">
     <div class="prose">
       <h2>Turning a request into a workflow</h2>
-      <p>Most requests arrive as a one-time task. I treat each as the first run of something that will happen again, and design for the next time.</p>
+      <p>Most requests arrive as a one-time task. I treat each as the first run of something that will happen again.</p>
     </div>
     <div class="compare">
       <div><p class="k">"I'd like to upload my own work."</p><p>A complete artwork management flow in the studio: drafts, previews, bulk changes with Undo, a scripture picker that catches typos, plus written guides for the team.</p></div>
@@ -130,20 +129,13 @@
     <div class="prose">
       <h2>Working with a non-technical client</h2>
       <ul>
-        <li><strong>I set the agenda.</strong> I wrote the project's working documents, from the collaboration checklist and content list to how the site will be run and the rules that go with it, so the artist always knew what was decided, what was waiting, and what was theirs to provide.</li>
-        <li><strong>No blank pages.</strong> Every open decision reaches the artist with a draft, a length limit from the layout, and a few options with my recommendation.</li>
-        <li><strong>Big ideas get a reality check.</strong> When the artist suggested inviting other artists to create together, I laid out what it would take to make it work. They saw it needed more thought and moved it to a later phase themselves.</li>
-        <li><strong>Plans before code.</strong> Bigger steps, like accounts and a shop, start as written plans the artist approves before anything is built.</li>
-        <li><strong>Real sites, not mockups.</strong> Each iteration goes up at its own preview address before it reaches the live site, and the full test suite runs there, not on the live site.</li>
+        <li><strong>I set the agenda.</strong> I wrote the project's working documents, from the collaboration checklist and content list to how the site will be run, and I follow up on what's still open.</li>
+        <li><strong>The artist stays on the content.</strong> I make the development decisions myself, so the artist can spend their time on the paintings. When something needs their call, I bring it as a short list of questions or a report.</li>
+        <li><strong>Big ideas get a reality check.</strong> The artist has many big ideas. I weigh each one's priority, what it would need, and the time it would cost, so they can see when an idea needs more thought and can wait.</li>
+        <li><strong>Plans before code.</strong> Bigger steps, like accounts and a shop, start as a written plan before anything is built.</li>
       </ul>
     </div>
-  </section>
-
-  <section>
-    <div class="prose" style="margin-bottom:1.6rem">
-      <p><strong>Stack:</strong> Next.js, TypeScript, Sanity, Vercel, Cloudflare (DNS, Email Routing, R2).</p>
-    </div>
-    <div class="cs-next">
+    <div class="cs-next" style="margin-top:2rem">
       <a href="../../#experience" class="case-link">← Back to all experience</a>
       <a href="../frankenstein-variorum/" class="case-link primary">Next: Frankenstein Variorum →</a>
     </div>
